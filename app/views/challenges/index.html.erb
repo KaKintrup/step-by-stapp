@@ -1,5 +1,12 @@
 <h1> Here is the challenges index page </h1>
 
 <%= link_to "Add a new challenge", new_challenge_path %>
-
-<%= link_to "See this challenge", challenges_path(@challenge) %>
+<ul>
+  
+    <% @challenges.each do  |challenge|%>
+    <li>
+      <%= challenge.title %>
+      <%= link_to "See this challenge", challenge_path(challenge) %>
+    </li>
+<% end %>
+<ul>
