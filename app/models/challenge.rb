@@ -5,11 +5,6 @@ class Challenge < ApplicationRecord
 
   validates :title, presence: true
   validates :description, length: { minimum: 10 }
-  validates :category, presence: true
   validates :category, inclusion: { in: ["sports", "mindfulness", "self-organisation", "studying", "nutrition", "others"]}
   validates :weekly_goal, inclusion: { in: 1..7 }
-
-
-  validates :description, presence: true
-  validates :description, presence: true
 end
