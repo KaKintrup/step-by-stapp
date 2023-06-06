@@ -1,7 +1,7 @@
 class ChallengeParticipationsController < ApplicationController
   def create
-    @completion = ChallengeCompletion.new
-    @completion.save
+    @participation = ChallengeParticipation.new
+    @participation.save
     raise
   end
 end
