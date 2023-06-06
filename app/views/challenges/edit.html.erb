@@ -1,2 +1,14 @@
 <h1> This is the challenge edit page (with a pre-filled form) </h1>
-<%= link_to "See all challenges", challenges_path %>
+
+ <div>
+  <%= simple_form_for(@challenge) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :category, collection: ["sports", "mindfulness", "self-organisation", "studying", "nutrition", "others"] %>
+    <%= f.input :weekly_goal, collection: (1..7).to_a %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :public %>
+    <%= f.submit %>
+  <% end %>
+ </div>
