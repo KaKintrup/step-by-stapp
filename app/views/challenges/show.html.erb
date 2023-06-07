@@ -1,5 +1,16 @@
 <h1> This is the challenge show page (where one challenge is displayed) </h1>
+<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+
+  <p>Youre part of this challenge</p>
+  <%= link_to "Unjoin this Challenge", challenge_challenge_participation_path(@challenge, @participation.first),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+<% else %>
+    <%= simple_form_for [@challenge, @new_participation] do |f| %>
+      <%= f.submit "join this challenge" %>
+    <% end %>
+<% end %>
+<%= @challenge.title %>
 
 <%= link_to "See all challenges", challenges_path %>
 <%= link_to "Edit challenge", edit_challenge_path %>
-<%= link_to "join this challenge",challenge_challenge_participations_path(@challenge) %>
