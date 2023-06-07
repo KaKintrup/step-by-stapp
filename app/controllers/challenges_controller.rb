@@ -10,7 +10,9 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(challenge_params)
+    @challenge.user = current_user
     if @challenge.save
+      @participation = ChallengeParticipation.create(user: current_user, challenge: @challenge )
       redirect_to challenges_path
     else
       render :new, status: :unprocessable_entity
@@ -32,6 +34,8 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    @new_participation = ChallengeParticipation.new
+    @participation = ChallengeParticipation.where(challenge_id: @challenge.id, user_id: current_user.id)
   end
 
   def destroy

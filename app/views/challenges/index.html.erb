@@ -2,26 +2,24 @@
 
 <%= link_to "Add a new challenge", new_challenge_path %>
 
-
-
-
     <% @challenges.each do  |challenge|%>
+       <% if challenge.public %>
 
 
-      <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <div class="card-trip-infos">
-          <div>
-            <p> <%= challenge.title %> </p>
-            <p> <%= challenge.description %> </p>
-            <p> <%= challenge.weekly_goal %> </p>
-            <p> <%= challenge.end_date %> </p>
-            <%= link_to "See this challenge", challenge_path(challenge) %>
+          <div class="card-trip"
+            <div class="card-trip-infos">
+              <div>
+                <p> <%= challenge.title %> </p>
+                <p> <%= challenge.description %> </p>
+                <p> <%= challenge.weekly_goal %> </p>
+                <p> <%= challenge.end_date %> </p>
+                <%= link_to "See this challenge", challenge_path(challenge) %>
+              </div>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+            </div>
           </div>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        </div>
-      </div>
 
+        <% end %>
 
     <% end %>
 

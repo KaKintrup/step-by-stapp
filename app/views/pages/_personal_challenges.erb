@@ -1,0 +1,15 @@
+<h3>new version</h3>
+<% @personal_participation = ChallengeParticipation.all%>
+<ul>
+
+    <% @personal_participation.each do  |participation|%>
+        <% if participation.user = current_user %>
+          <% #TODO see all challenges also the one you  picked  %>
+                <li>
+                    <%= participation.challenge.title %>
+                    <%= link_to "See this challenge", challenge_path(participation.challenge) %>
+                </li>
+        <% end %>
+
+    <% end %>
+</ul>
