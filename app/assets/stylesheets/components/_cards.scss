@@ -1,4 +1,4 @@
-.card-category {
+.card-quote {
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -8,7 +8,108 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+// This is the default challenge card design
+
+.card-trip {
+  overflow: hidden;
+  background: black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4px;
+  border: 2px solid white;
+}
+
+.card-trip>img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+
+// Here is the new challenge card design
+
+.card-challenge {
+  background-color: black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4px;
+  border: 2px solid white;
+  padding: 4px;
+
+}
+
+.card-challenge-infos {
+  height: 28px;
+  width: 100%;
+  padding: 2px;
+  border-bottom: 1px solid white;
+
+}
+
+.card-challenge-progress {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: blue;
+  position: relative;
+}
+
+.card-challenge-progress .card-challenge-icon {
+  left: 8px;
+  top: -8px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+}
+
+.card-challenge-icon {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+}
+
+.card-challenge-progress-boxes {}
+
+.check-button {
+  background-color: white;
+  color: black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-evenly;
 }
