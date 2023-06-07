@@ -28,5 +28,5 @@
 <% if @challenge.user = current_user %>
     <%= link_to "Edit challenge", edit_challenge_path %>
     <%= link_to "Delete this Challenge", challenge_path(@challenge),
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" } %>
 <% end %>

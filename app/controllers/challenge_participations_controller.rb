@@ -1,5 +1,9 @@
 class ChallengeParticipationsController < ApplicationController
 
+  def index
+    
+  end
+
   def create
     @participation = ChallengeParticipation.new
     @participation.challenge_id = params[:challenge_id]
