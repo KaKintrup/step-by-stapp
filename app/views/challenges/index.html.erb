@@ -2,11 +2,14 @@
 
 <%= link_to "Add a new challenge", new_challenge_path %>
 <ul>
-  
+
     <% @challenges.each do  |challenge|%>
-    <li>
-      <%= challenge.title %>
-      <%= link_to "See this challenge", challenge_path(challenge) %>
-    </li>
+      <% #see all public challenges also the one you already picked  %>
+        <% if challenge.public %>
+            <li>
+                <%= challenge.title %>
+                <%= link_to "See this challenge", challenge_path(challenge) %>
+            </li>
+        <% end %>
     <% end %>
 </ul>

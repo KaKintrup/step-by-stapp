@@ -1,0 +1,12 @@
+<% @personal_challenges = Challenge.all %>
+<ul>
+
+    <% @personal_challenges.each do  |challenge|%>
+      <% #TODO see all challenges also the one you  picked  %>
+  <% #if joined then show %>
+            <li>
+                <%= challenge.title %>
+                <%= link_to "See this challenge", challenge_path(challenge) %>
+            </li>
+    <% end %>
+</ul>
