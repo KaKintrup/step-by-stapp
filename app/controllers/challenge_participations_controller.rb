@@ -6,7 +6,6 @@ class ChallengeParticipationsController < ApplicationController
     @participation.user_id = current_user.id
     @participation.save
     redirect_to challenge_path(@participation.challenge_id)
-
   end
 
   def destroy
