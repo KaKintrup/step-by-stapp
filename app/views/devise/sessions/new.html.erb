@@ -1,4 +1,7 @@
-<h2>Log in</h2>
+<div class="underlined-headline">
+  <h1>Log in</h1>
+  <div class="headline"></div>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
   <div class="form-inputs">
@@ -12,9 +15,10 @@
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+  
+    <%= f.button :submit, "Log in", class: "btn-blue" %>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+

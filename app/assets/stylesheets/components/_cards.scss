@@ -1,12 +1,14 @@
 .card-quote {
+  height: 180px;
+  padding: 4px;
   background-size: cover;
   background-position: center;
-  height: 180px;
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -70,6 +72,11 @@
   height: 100%;
   margin-left: 2px;
   font-size: 12;
+}
+
+.card-challenge-title p {
+  text-decoration: none;
+  color: white;
 }
 
 .card-challenge-progress-boxes {

@@ -1,31 +1,44 @@
-.btn-primary {
-  padding: 8px 24px;
+.btn-blue {
+  padding: 8px;
   margin: 8px 0px 8px 0px;
   border-radius: 50px;
   font-weight: bold;
   background: #56CFE1;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
 }
 
-.btn-primary a {
-  text-decoration: none;
+.btn-blue a {
   color: white;
 }
 
-.btn-primary button {
-  text-decoration: none;
+.btn-blue button {
   color: white;
 }
 
-.btn-secondary {
+.btn-black {
   padding: 8px 24px;
   margin: 8px 0px 8px 0px;
   border-radius: 50px;
   font-weight: bold;
   border: 2px solid #56CFE1;
   background: black;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
 }
 
-.btn-secondary a {
-  text-decoration: none;
+.btn-black a {
+  color: white;
+}
+
+.btn-black button {
   color: white;
 }

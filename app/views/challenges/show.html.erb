@@ -1,22 +1,25 @@
+<% #actually showing the challenge %>
 <div class="underlined-headline">
-  <h1> This is the challenge show page (where one challenge is displayed) </h1>
+  <h1><%= @challenge.title %></h1>
   <div class="headline"></div>
 </div>
 
+<div>Here has to be the card for the challenge details</div>
 
-<% #actually showing the challenge %>
-<%= @challenge.title %>
+<ul>
+  <li><%= @challenge.description %></li>
+  <li><%= @challenge.category %></li>
+  <li><%= @challenge.weekly_goal %></li>
+  <li><%= @challenge.start_date %></li>
+  <li><%= @challenge.end_date %></li>
+</ul>
 
-<%= link_to "See all challenges", challenges_path %>
+<div class="underlined-headline">
+  <h2>Your progress</h2>
+  <div class="headline"></div>
+</div>
 
-
-<% # Deleting or Editing the challenge %>
-<% if @challenge.user = current_user %>
-    <%= link_to "Edit challenge", edit_challenge_path %>
-    <%= link_to "Delete this Challenge", challenge_path(@challenge),
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" } %>
-<% end %>
-
+<div>Here has to be the calendar</div>
 
 <% # showing the join or unjoin method %>
 <% if current_user %>
@@ -24,14 +27,23 @@
 
   <p>You're part of this challenge</p>
 
-  <div class="btn-primary">
-    <%= link_to "Leave this Challenge", challenge_challenge_participation_path(@challenge, @participation.first),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  </div>
+    <%= link_to "Leave this challenge", challenge_challenge_participation_path(@challenge, @participation.first),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 
 <% else %>
     <%= simple_form_for [@challenge, @new_participation] do |f| %>
-      <%= f.submit "join this challenge" %>
+      <%= f.submit "Join this challenge", class: "btn-black" %>
     <% end %>
 <% end %>
 <% end %>
+
+
+<% # Deleting or Editing the challenge %>
+<% if @challenge.user = current_user %>
+    <%= link_to "Edit challenge", edit_challenge_path, class: "btn-black" %>
+    <%= link_to "Delete this challenge", challenge_path(@challenge),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" }, class: "btn-black" %>
+<% end %>
+
+
+<%= link_to "See all challenges", challenges_path, class: "btn-blue" %>

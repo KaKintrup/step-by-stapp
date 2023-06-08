@@ -1,16 +1,45 @@
 <% @personal_participation = ChallengeParticipation.all%>
-<ul>
 
-    <% @personal_participation.each do  |participation|%>
-        <% if participation.user = current_user %>
-          <% #TODO see all challenges also the one you  picked  %>
-                <li>
-                    <%= participation.challenge.title %>
-                    <div class="btn-primary">
-                        <%= link_to "See this challenge", challenge_path(participation.challenge) %>
-                    </div>
-                </li>
-        <% end %>
+<!-- New card design -->
 
+<div class="cards-challenges my-5">
+  <% @personal_participation.each do  |participation|%>
+    <% if participation.user = current_user %>
+      <%= link_to challenge_path(participation.challenge) do %>
+        <div class="card-challenge" >
+          <div class="card-challenge-infos"></div>
+          <div class="card-challenge-progress">
+            <div class="card-challenge-icon-title">
+              <div class="card-challenge-icon">
+                <%= image_tag "meditation-new.png", height: 20, width: 20 %>
+              </div>
+              <div class="card-challenge-title">
+                  <p> <%= participation.challenge.title %> </p>
+              </div>
+            </div>
+            <div class="card-challenge-progress-boxes">
+              <div class="checkbox mon">
+              </div>
+              <div class="checkbox tue">
+              </div>
+              <div class="checkbox wed">
+              </div>
+              <div class="checkbox thu">
+              </div>
+              <div class="checkbox fri">
+              </div>
+              <div class="checkbox sat">
+              </div>
+              <div class="checkbox sun">
+              </div>
+            </div>
+            <div href="#" class="check-button">
+              <%= image_tag "check.png", height: 32, width: 32 %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-</ul>
+  <% end %>
+</div>
+
