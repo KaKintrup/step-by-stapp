@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :challenges do
     resources :challenge_participations, only: [:create, :show, :edit, :update, :destroy]
   end
+  resources :blog_posts
   resources :challenge_participations, only: [:index]
 end
