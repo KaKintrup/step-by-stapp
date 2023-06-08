@@ -1,42 +1,54 @@
-<h1> Here is the challenges index page </h1>
+<div class="underlined-headline">
+  <h1 class="underlined"> My challenges </h1>
+</div>
+
+<!-- New card design -->
+
+<div class="cards-challenges my-5">
+
+  <% @challenges.each do  |challenge|%>
+    
+    <% if challenge.public %>
+
+      <%= link_to challenge_path(challenge) do %>
+        <div class="card-challenge" >
+        <!-- <%= link_to "See this challenge", challenge_path(challenge) %> --> 
+          <div class="card-challenge-infos">
+          </div>
+          <div class="card-challenge-progress">
+              <div class="card-challenge-icon-title">
+                <div class="card-challenge-icon"  >
+                  <%= image_tag "meditation-new.png", height: 20, width: 20 %>
+                </div>
+                <div class="card-challenge-title">
+                    <p> <%= challenge.title %> </p>
+                </div>
+              </div>
+              <div class="card-challenge-progress-boxes">
+                <div class="checkbox mon">
+                </div>
+                <div class="checkbox tue">
+                </div>
+                <div class="checkbox wed">
+                </div>
+                <div class="checkbox thu">
+                </div>
+                <div class="checkbox fri">
+                </div>
+                <div class="checkbox sat">
+                </div>
+                <div class="checkbox sun">
+                </div>
+              </div>
+              <a href="#" class="check-button">
+                <%= image_tag "check.png", height: 32, width: 32 %>
+                <!-- <i class="fa-solid fa-circle-check gradient", height="40", width="40"></i> -->
+              </a>
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to "Add a new challenge", new_challenge_path %>
-
-    <% @challenges.each do  |challenge|%>
-       <% if challenge.public %>
-
-
-          <div class="card-trip"
-            <div class="card-trip-infos">
-              <div>
-                <p> <%= challenge.title %> </p>
-                <p> <%= challenge.description %> </p>
-                <p> <%= challenge.weekly_goal %> </p>
-                <p> <%= challenge.end_date %> </p>
-                <%= link_to "See this challenge", challenge_path(challenge) %>
-              </div>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            </div>
-          </div>
-
-        <% end %>
-
-    <% end %>
-
-
-    <div class="card-challenge">
-      <div class="card-challenge-infos">
-        Run (here is the title)
-      </div>
-      <div class="card-challenge-progress">
-          <div class="card-challenge-icon"  >
-            <%= image_tag "meditation.png", height: 20, width: 20 %>
-          </div>
-          <div class="card-challenge-progress-boxes">
-          BOX, BOX, BOX, BOX, BOX
-          </div>
-          <a href="#" class="check-button">
-            <strong> ✓ </strong>
-          </a>
-        </div>
-    </div>

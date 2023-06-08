@@ -67,48 +67,77 @@
   margin-bottom: 4px;
   border: 2px solid white;
   padding: 4px;
-
 }
 
 .card-challenge-infos {
   height: 28px;
   width: 100%;
   padding: 2px;
-  border-bottom: 1px solid white;
-
+  border-bottom: 1px solid #9D9D9D;
 }
 
 .card-challenge-progress {
+  height: 64px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-top: 6px;
   padding-bottom: 6px;
-  background-color: blue;
+  background-color: black;
   position: relative;
 }
 
-.card-challenge-progress .card-challenge-icon {
-  left: 8px;
-  top: -8px;
-  height: 20px;
-  width: 20px;
+.card-challenge-progress .card-challenge-icon-title {
+  left: 0px;
+  top: -14px;
+  height: 30px;
+  padding: 4px;
   position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+}
+
+.card-challenge-icon-title {
+  height: 100%;
+  display: flex;
+  padding-left: 4px;
 }
 
 .card-challenge-icon {
-  height: 20px;
-  width: 20px;
-  background-color: white;
+  height: 100%;
+  margin-right: 2px;
+  background-color: black;
 }
 
-.card-challenge-progress-boxes {}
+.card-challenge-title {
+  height: 100%;
+  margin-left: 2px;
+  font-size: 12;
+}
+
+.card-challenge-progress-boxes {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.checkbox {
+  background-color: #54525E;
+  height: 20px;
+  width: 20px;
+  margin: 0px 8px 0px 8px;
+  border-radius: 3px;
+}
 
 .check-button {
-  background-color: white;
+  background: linear-gradient(180deg, #B6139F, #5E60CE, #80FFDB);
   color: black;
-  height: 30px;
-  width: 30px;
   border-radius: 50%;
+  padding: 8px;
+  margin-right: 8px;
   text-decoration: none;
   display: flex;
   justify-content: space-evenly;
