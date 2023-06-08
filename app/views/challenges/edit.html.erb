@@ -1,6 +1,10 @@
-<h1> This is the challenge edit page (with a pre-filled form) </h1>
+<div class="underlined-headline">
+  <h1>Edit challenge</h1>
+  <div class="headline"></div>
+</div>
 
- <div>
+
+<div>
   <%= simple_form_for(@challenge) do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
@@ -9,6 +13,6 @@
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.input :public %>
-    <%= f.submit %>
+    <%= f.button :submit, "Submit", class: "btn-blue" %>
   <% end %>
- </div>
+</div>

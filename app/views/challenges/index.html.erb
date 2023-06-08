@@ -3,7 +3,7 @@
   <div class="headline"></div>
 </div>
 
-<!-- New card design -->
+<!-- Challenge card design -->
 
 <div class="cards-challenges my-5">
   <% @challenges.each do  |challenge|%>
@@ -46,10 +46,9 @@
   <% end %>
 </div>
 
-<div class="btn-primary">
-  <%= link_to "+ Add a new challenge", new_challenge_path %>
+<div>
+  <%= link_to "Add a new challenge", new_challenge_path, class: "btn-blue d-flex" %>
 </div>
-
-<div class="btn-secondary">
-  <%= link_to "See all my challenges", challenge_participations_path %>
+<div>
+    <%= link_to "See all my challenges", challenge_participations_path, class: "btn-black d-flex" %>
 </div>
