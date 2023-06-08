@@ -1,4 +1,3 @@
-<h3>new version</h3>
 <% @personal_participation = ChallengeParticipation.all%>
 <ul>
 
@@ -7,7 +6,9 @@
           <% #TODO see all challenges also the one you  picked  %>
                 <li>
                     <%= participation.challenge.title %>
-                    <%= link_to "See this challenge", challenge_path(participation.challenge) %>
+                    <div class="btn-primary">
+                        <%= link_to "See this challenge", challenge_path(participation.challenge) %>
+                    </div>
                 </li>
         <% end %>
 

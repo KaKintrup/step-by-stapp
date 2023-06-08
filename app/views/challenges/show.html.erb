@@ -1,18 +1,9 @@
-<h1> This is the challenge show page (where one challenge is displayed) </h1>
+<div class="underlined-headline">
+  <h1> This is the challenge show page (where one challenge is displayed) </h1>
+  <div class="headline"></div>
+</div>
 
 
-<% # showing the join or unjoin method %>
-<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
-
-  <p>Youre part of this challenge</p>
-  <%= link_to "Unjoin this Challenge", challenge_challenge_participation_path(@challenge, @participation.first),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
-<% else %>
-    <%= simple_form_for [@challenge, @new_participation] do |f| %>
-      <%= f.submit "join this challenge" %>
-    <% end %>
-<% end %>
 
 
 <% #actually showing the challenge %>
@@ -21,12 +12,26 @@
 <%= link_to "See all challenges", challenges_path %>
 
 
-
-
-
 <% # Deleting or Editing the challenge %>
 <% if @challenge.user = current_user %>
     <%= link_to "Edit challenge", edit_challenge_path %>
     <%= link_to "Delete this Challenge", challenge_path(@challenge),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" } %>
+<% end %>
+
+
+<% # showing the join or unjoin method %>
+<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+
+  <p>You're part of this challenge</p>
+
+  <div class="btn-primary">
+    <%= link_to "Leave this Challenge", challenge_challenge_participation_path(@challenge, @participation.first),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </div>
+
+<% else %>
+    <%= simple_form_for [@challenge, @new_participation] do |f| %>
+      <%= f.submit "join this challenge" %>
+    <% end %>
 <% end %>

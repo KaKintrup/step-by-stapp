@@ -1,28 +1,21 @@
+.underlined-headline {
+  width: fit-content;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
 h1 {
   font-size: 28px;
   font-weight: 400;
   margin-left: 20px;
-  position: relative;
 }
 
-.underlined-headline {
-  position: relative;
-  transform: translateX(-20px);
-  border-bottom: 2px solid white;
-  border-width: 4px;
-}
-
-
-.underlined-headline::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
+.headline {
+  border-bottom: 4px solid white;
   width: 50%;
-  left: 25%;
-  border-top: 1px solid red;
 }
 
 h2 {
   font-size: 20px;
+  margin-left: 20px;
 }
