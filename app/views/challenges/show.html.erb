@@ -2,6 +2,8 @@
 
 
 <% # showing the join or unjoin method %>
+<% if current_user %>
+
 <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
 
   <p>Youre part of this challenge</p>
@@ -13,7 +15,7 @@
       <%= f.submit "join this challenge" %>
     <% end %>
 <% end %>
-
+<% end %>
 
 <% #actually showing the challenge %>
 <%= @challenge.title %>
