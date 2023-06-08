@@ -1,54 +1,55 @@
 <div class="underlined-headline">
-  <h1 class="underlined"> My challenges </h1>
+  <h1> Community challenges</h1>
+  <div class="headline"></div>
 </div>
 
 <!-- New card design -->
 
 <div class="cards-challenges my-5">
-
   <% @challenges.each do  |challenge|%>
-    
     <% if challenge.public %>
-
       <%= link_to challenge_path(challenge) do %>
         <div class="card-challenge" >
-        <!-- <%= link_to "See this challenge", challenge_path(challenge) %> --> 
-          <div class="card-challenge-infos">
-          </div>
+          <div class="card-challenge-infos"></div>
           <div class="card-challenge-progress">
-              <div class="card-challenge-icon-title">
-                <div class="card-challenge-icon"  >
-                  <%= image_tag "meditation-new.png", height: 20, width: 20 %>
-                </div>
-                <div class="card-challenge-title">
-                    <p> <%= challenge.title %> </p>
-                </div>
+            <div class="card-challenge-icon-title">
+              <div class="card-challenge-icon">
+                <%= image_tag "meditation-new.png", height: 20, width: 20 %>
               </div>
-              <div class="card-challenge-progress-boxes">
-                <div class="checkbox mon">
-                </div>
-                <div class="checkbox tue">
-                </div>
-                <div class="checkbox wed">
-                </div>
-                <div class="checkbox thu">
-                </div>
-                <div class="checkbox fri">
-                </div>
-                <div class="checkbox sat">
-                </div>
-                <div class="checkbox sun">
-                </div>
+              <div class="card-challenge-title">
+                  <p> <%= challenge.title %> </p>
               </div>
-              <a href="#" class="check-button">
-                <%= image_tag "check.png", height: 32, width: 32 %>
-                <!-- <i class="fa-solid fa-circle-check gradient", height="40", width="40"></i> -->
-              </a>
             </div>
+            <div class="card-challenge-progress-boxes">
+              <div class="checkbox mon">
+              </div>
+              <div class="checkbox tue">
+              </div>
+              <div class="checkbox wed">
+              </div>
+              <div class="checkbox thu">
+              </div>
+              <div class="checkbox fri">
+              </div>
+              <div class="checkbox sat">
+              </div>
+              <div class="checkbox sun">
+              </div>
+            </div>
+            <div href="#" class="check-button">
+              <%= image_tag "check.png", height: 32, width: 32 %>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
 
-<%= link_to "Add a new challenge", new_challenge_path %>
+<div class="btn-primary">
+  <%= link_to "+ Add a new challenge", new_challenge_path %>
+</div>
+
+<div class="btn-secondary">
+  <%= link_to "See all my challenges", challenge_participations_path %>
+</div>
