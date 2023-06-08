@@ -4,8 +4,6 @@
 </div>
 
 
-
-
 <% #actually showing the challenge %>
 <%= @challenge.title %>
 
@@ -21,6 +19,7 @@
 
 
 <% # showing the join or unjoin method %>
+<% if current_user %>
 <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
 
   <p>You're part of this challenge</p>
@@ -34,4 +33,5 @@
     <%= simple_form_for [@challenge, @new_participation] do |f| %>
       <%= f.submit "join this challenge" %>
     <% end %>
+<% end %>
 <% end %>

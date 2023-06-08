@@ -1,4 +1,6 @@
 class ChallengesController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
     @challenges = Challenge.all
@@ -35,8 +37,11 @@ class ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     @new_participation = ChallengeParticipation.new
-    @participation = ChallengeParticipation.where(challenge_id: @challenge.id, user_id: current_user.id)
-  end
+    if current_user
+      @participation = ChallengeParticipation.where(challenge_id: @challenge.id, user_id: current_user.id)
+    end
+
+    end
 
   def destroy
     @challenge = Challenge.find(params[:id])
