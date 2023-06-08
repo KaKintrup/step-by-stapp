@@ -1,0 +1,14 @@
+<h1>Welcome to the blog page</h1>
+
+
+
+<% @posts.each do  |post|%>
+
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2><%= post.title %> </h2>
+    <p><% post.text %></p>
+  </div>
+</div>
+<% end %>

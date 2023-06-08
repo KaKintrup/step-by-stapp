@@ -2,6 +2,8 @@ class Challenge < ApplicationRecord
   belongs_to :user
   has_many :challenge_participations, dependent: :destroy
   has_many :challenge_completions, through: :challenge_participations, dependent: :destroy
+  has_many :blog_posts
+
 
   validates :title, presence: true
   validates :description, length: { minimum: 10 }
