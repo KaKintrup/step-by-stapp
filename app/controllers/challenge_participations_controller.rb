@@ -1,12 +1,15 @@
 class ChallengeParticipationsController < ApplicationController
 
+  def index
+    
+  end
+
   def create
     @participation = ChallengeParticipation.new
     @participation.challenge_id = params[:challenge_id]
     @participation.user_id = current_user.id
     @participation.save
     redirect_to challenge_path(@participation.challenge_id)
-
   end
 
   def destroy
