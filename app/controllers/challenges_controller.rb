@@ -40,8 +40,7 @@ class ChallengesController < ApplicationController
     if current_user
       @participation = ChallengeParticipation.where(challenge_id: @challenge.id, user_id: current_user.id)
     end
-
-    end
+  end
 
   def destroy
     @challenge = Challenge.find(params[:id])
