@@ -1,6 +1,7 @@
-<h1>Welcome to the blog page</h1>
-
-<%= link_to "Add a new post", new_blog_post_path, class: "btn-blue d-flex" %>
+<div class="underlined-headline">
+  <h1>Blog</h1>
+  <div class="headline"></div>
+</div>
 
 <% @posts.each do  |post|%>
 
@@ -11,5 +12,7 @@
     <p><% post.descripton %></p>
   </div>
 </div>
-<%= link_to "See his post", blog_post_path(post), class: "btn-blue d-flex" %>
+<%= link_to "See this blog post", blog_post_path(post), class: "btn-blue d-flex" %>
 <% end %>
+
+<%= link_to "Add a new post", new_blog_post_path, class: "btn-black d-flex" %>

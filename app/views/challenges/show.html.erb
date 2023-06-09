@@ -10,24 +10,30 @@
 
 <div class="card-category">
     <% if @challenge.category == "sports" %>
-    <i class="fa-solid fa-person-running sports"></i>
+      <i class="fa-solid fa-person-running sports"></i>
+      <div class="sports"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
     <% elsif @challenge.category == "mindfulness" %>
-    <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+      <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+      <div class="mindfulness"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
     <% elsif @challenge.category == "self-organisation" %>
-    <i class="fa-solid fa-clipboard-list self-organisation"></i>
+      <i class="fa-solid fa-clipboard-list self-organisation"></i>
+      <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
     <% elsif @challenge.category == "studying" %>
-    <i class="fa-solid fa-book-open-cover studying"></i>
+      <i class="fa-solid fa-book-open-cover studying"></i>
+      <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
     <% elsif @challenge.category == "nutrition" %>
-    <i class="fa-solid fa-glass-water nutrition"></i>
+      <i class="fa-solid fa-glass-water nutrition"></i>
+      <div class="nutrition"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
     <% elsif @challenge.category == "others" %>
-    <i class="fa-solid fa-rocket others"></i>
+      <i class="fa-solid fa-rocket others"></i>
+      <div class="others"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+
     <% end %>
-  <div> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 </div>
 
 
@@ -57,15 +63,16 @@
 </div>
 -->
 
-<div>Here has to be the card for the challenge details</div>
-
-<ul>
-  <li><%= @challenge.description %></li>
-  <li><%= @challenge.category %></li>
-  <li><%= @challenge.weekly_goal %></li>
-  <li><%= @challenge.start_date %></li>
-  <li><%= @challenge.end_date %></li>
-</ul>
+<div class="challenge-details">
+  <div class="challenge-description"><%= @challenge.description %></div>
+  <div class="challenge-goal-duration">
+    <p class="weekly-goal"> <em> <%= @challenge.weekly_goal %> weeks </em> </p>
+    <div class="duration">
+      <p> Start: <%= @challenge.start_date %> </p>
+      <p> End: <%= @challenge.end_date %> </p>
+    </div>
+  </div>
+</div>
 
 <div class="underlined-headline">
   <h2>Your progress</h2>
