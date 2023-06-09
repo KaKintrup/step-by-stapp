@@ -8,7 +8,8 @@
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
   <div class="card-product-infos">
     <h2><%= post.title %> </h2>
-    <p><% post.text %></p>
+    <p><% post.descripton %></p>
   </div>
 </div>
+<%= link_to "See his post", blog_post_path(post), class: "btn-blue d-flex" %>
 <% end %>
