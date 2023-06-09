@@ -3,7 +3,7 @@
   <%= simple_form_for(@post) do |f| %>
     <%= f.input :title %>
     <%= f.input :text %>
-    <%= f.input :challenge_id, collection: Challenge.all %>
+    <%= f.input :challenge_id, collection: Challenge.all, input_html: {}%>
     <%= f.submit %>
   <% end %>
  </div>
