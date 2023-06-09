@@ -1,7 +1,60 @@
 <% #actually showing the challenge %>
-<div class="underlined-headline">
+<div class="underlined-headline mb-2">
   <h1><%= @challenge.title %></h1>
   <div class="headline"></div>
+</div>
+
+<!-- Old alternative with png-icons -->
+
+<!--
+<div class="card-category">
+    <% if @challenge.category = "sports" %>
+    <i class="fa-solid fa-person-running sports"></i>
+    
+    <% elsif @challenge.category = "mindfulness" %>
+    <i class="fa-sharp fa-solid fa-spa"></i>
+
+    <% elsif @challenge.category = "self-organisation" %>
+    <i class="fa-solid fa-clipboard-list"></i>
+
+    <% elsif @challenge.category = "studying" %>
+    <i class="fa-solid fa-book-open-cover"></i>
+
+    <% elsif @challenge.category = "nutrition" %>
+    <i class="fa-solid fa-glass-water"></i>
+    
+    <% elsif @challenge.category = "others" %>
+    <i class="fa-solid fa-rocket"></i>
+    <% end %>
+  <div> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+</div>
+-->
+
+
+
+<!-- New alternative with font awesome icons --> 
+
+<div class="card-category">
+  <% case @challenge.category %>
+  <% when "sports" %>
+    <i class="fa-solid fa-person-running sports sports"></i>
+    <div class="sports" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% when "mindfulness" %>
+    <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+    <div class="mindfulness" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% when "self-organisation" %>
+    <i class="fa-solid fa-clipboard-list self-organisation"></i>
+    <div class="self-organisation" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% when "studying" %>
+    <i class="fa-solid fa-book-open-cover studying"></i>
+    <div class="studying" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% when "nutrition" %>
+    <i class="fa-solid fa-glass-water nutrition"></i>
+    <div class="nutrition" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% when "others" %>
+    <i class="fa-solid fa-rocket others"></i>
+    <div class="others" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <% end %>
 </div>
 
 <div>Here has to be the card for the challenge details</div>
