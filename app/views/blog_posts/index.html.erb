@@ -1,6 +1,6 @@
 <h1>Welcome to the blog page</h1>
 
-
+<%= link_to "Add a new post", new_blog_post_path, class: "btn-blue d-flex" %>
 
 <% @posts.each do  |post|%>
 
@@ -8,7 +8,8 @@
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
   <div class="card-product-infos">
     <h2><%= post.title %> </h2>
-    <p><% post.text %></p>
+    <p><% post.descripton %></p>
   </div>
 </div>
+<%= link_to "See his post", blog_post_path(post), class: "btn-blue d-flex" %>
 <% end %>
