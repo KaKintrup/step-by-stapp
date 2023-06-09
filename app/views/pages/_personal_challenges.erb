@@ -23,20 +23,31 @@
               </div>
             </div>
             <div class="card-challenge-progress-boxes">
-              <div class="checkbox mon">
-              </div>
-              <div class="checkbox tue">
-              </div>
-              <div class="checkbox wed">
-              </div>
-              <div class="checkbox thu">
-              </div>
-              <div class="checkbox fri">
-              </div>
-              <div class="checkbox sat">
-              </div>
-              <div class="checkbox sun">
-              </div>
+
+
+
+                 <% #adding the logic to the check boxes %>
+                 <% markers = ChallengeCompletion.all %>
+                  <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
+                  <% one_week.each do |day| %>
+                  <% counter = 0 %>
+                  <% # es sei denn marker day = wie der day  %>
+                           <% markers.each do |marker| %>
+                                <% if marker.created_at.to_date == day %>
+                                    <% counter += 1 %>
+                                <% end %>
+                           <% end %>
+                      <% if counter.positive? %>
+                      <div class = "checked">
+                                        </div>
+                      <% else %>
+                      <div class = "checkbox">
+                                        </div>
+                      <% end %>
+
+
+                  <% end %>
+
             </div>
             <div href="#" class="check-button">
               <%= image_tag "check.png", height: 32, width: 32 %>
@@ -47,4 +58,3 @@
     <% end %>
   <% end %>
 </div>
-

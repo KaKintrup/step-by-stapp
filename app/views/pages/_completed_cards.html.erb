@@ -1,0 +1,8 @@
+<% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
+<% cc = ChallengeParticipation.last %>
+<% peter = ChallengeCompletion.new %>
+<% peter.challenge_participation_id = cc.id %>
+
+<%= peter.created_at.to_date %>
+
+<% raise %>
