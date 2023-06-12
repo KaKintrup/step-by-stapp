@@ -1,9 +1,10 @@
 <div class="underlined-headline">
-  <h1> Community challenges</h1>
+  <h1> Public challenges</h1>
   <div class="headline"></div>
 </div>
 
 <!-- Challenge card design -->
+
 
 <div class="cards-challenges my-5">
   <% @challenges.each do  |challenge|%>
@@ -16,7 +17,20 @@
           <div class="card-challenge-progress">
             <div class="card-challenge-icon-title">
               <div class="card-challenge-icon">
-                <%= image_tag "mindfulness-category.png", height: 26, width: 26 %>
+                <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> --> 
+                <% if challenge.category == "sports" %>
+                  <i class="fa-solid fa-person-running sports"></i>
+                <% elsif challenge.category == "mindfulness" %>
+                  <i class="fa-sharp fa-solid fa-spa mindfulness"></i>                  
+                <% elsif challenge.category == "self-organisation" %>
+                  <i class="fa-solid fa-clipboard-list self-organisation"></i>
+                <% elsif challenge.category == "studying" %>
+                  <i class="fa-solid fa-book-open-cover studying"></i>
+                <% elsif challenge.category == "nutrition" %>
+                  <i class="fa-solid fa-glass-water nutrition"></i>
+                <% elsif challenge.category == "others" %>
+                  <i class="fa-solid fa-rocket others"></i>
+                <% end %>
               </div>
               <div class="card-challenge-title">
                 <%= challenge.title %>
