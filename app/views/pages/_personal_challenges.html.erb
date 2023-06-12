@@ -1,5 +1,6 @@
 
 <% @personal_participation = ChallengeParticipation.all%>
+<% new_completion = ChallengeCompletion.new %>
 
 <!-- New card design -->
 
@@ -46,30 +47,32 @@
 
 
                  <% #adding the logic to the check boxes %>
-                 <% markers = ChallengeCompletion.all %>
+
+
+                  <% markers =  current_user.challenge_participations.where(challenge: participation.challenge).map(&:challenge_completions) %>
                   <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
                   <% completion = 0 %>
                   <% one_week.each do |day| %>
-                  <% counter = 0 %>
-                  <% # es sei denn marker day = wie der day  %>
-                           <% markers.each do |marker| %>
+                    <% counter = 0 %>
+                    <% # es sei denn marker day = wie der day  %>
+                        <% markers.each do |completions| %>
+                            <% completions.each do |marker|  %>
                                 <% if marker.created_at.to_date == day %>
-                                    <% counter += 1 %>
+                                  <% counter += 1 %>
                                 <% end %>
-                           <% end %>
-                      <% if counter.positive? %>
+                            <% end %>
+                        <% end %>
+                    <% if counter.positive? %>
                       <% completion += 1 %>
                       <div class = "checked">
                                         </div>
-                      <% else %>
+                    <% else %>
                       <div class = "checkbox">
                                         </div>
-                      <% end %>
-
-
+                    <% end %>
                   <% end %>
                   <% #now the completion  %>
-                  <% if participation.challenge.weekly_goal == completion %>
+                  <% if participation.challenge.weekly_goal <=  completion %>
                         <div class = "completion-done">
                                         </div>
                   <% else %>
@@ -78,12 +81,21 @@
                   <% end %>
 
             </div>
-            <div href="#" class="check-button">
-              <%= image_tag "check.png", height: 32, width: 32 %>
-            </div>
+      <% end %>
+            <% # button  %>
+            <div>
+             <%= simple_form_for [participation , new_completion] do |f| %>
+               <%= button_tag type: 'submit', class: "check-button" do %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+               <% end %>
+             <% end %>
+             </div>
+
+
+
+
           </div>
         </div>
-      <% end %>
     <% end %>
   <% end %>
 </div>

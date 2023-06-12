@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :challenges do
-    resources :challenge_participations, only: [:create, :show, :edit, :update, :destroy]
+    resources :challenge_participations, only: [:create, :destroy]
   end
   resources :blog_posts
-  resources :challenge_participations, only: [:index]
+  resources :challenge_participations, only: [:index, :show] do
+    resources :challenge_completions, only: [:create]
+  end
 end
