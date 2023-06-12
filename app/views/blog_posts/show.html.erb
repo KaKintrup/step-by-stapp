@@ -4,9 +4,11 @@
   <div class="headline"></div>
 </div>
 
-
-  <div class="image-content" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg)">
+  <div class="image-content">
+    <%= cl_image_tag @post.photo.key%>
   </div>
+
+  
 
   <em> <%= @post.descripton %> </em>
 

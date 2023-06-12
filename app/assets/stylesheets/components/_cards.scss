@@ -235,7 +235,7 @@ a {
   color: #7400B8;
 }
 
-// Here is the card for the blog posts overview
+// Here is the card for the blog posts overview (index)
 
 .card-blog-post {
   overflow: hidden;
@@ -279,20 +279,21 @@ a {
   flex: 1;
 }
 
-// Here is the card for the blog posts details
+.card-blog-infos .challenge-title {
+  font-size: 12px;
+}
 
-.image-content {
-  background-size: cover;
-  background-position: center;
-  height: 160px;
-  margin-left: -16vw;
-  padding-left: 16vw;
-  margin-right: -16vw;
-  padding-right: 16vw;
-  margin-bottom: 16px;
+// Here is the card for the blog posts details (show)
+
+.image-content img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-challenge-connected {
