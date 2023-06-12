@@ -1,3 +1,11 @@
+// General stylings
+
+a {
+  text-decoration: none;
+}
+
+// Here is the card for the motivational quote
+
 .card-quote {
   height: 180px;
   padding: 4px;
@@ -16,7 +24,7 @@
 }
 
 
-// Here is the new challenge card design
+// Here is the card for the challenges overview
 
 .card-challenge {
   background-color: black;
@@ -80,7 +88,6 @@
   justify-content: center;
 }
 
-
 .card-challenge-progress-boxes {
   display: flex;
   justify-content: space-between;
@@ -143,83 +150,6 @@
   border: none;
 }
 
-
-
-
-
-
-/* ui kit le wagon  */
-.card-product {
-  overflow: hidden;
-  height: 120px;
-  background: #9D9D9D;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-}
-
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
-}
-
-
-// Here is the category card design
-
-.card-category {
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.card-category i {
-  margin: 0px 4px 0px 0px;
-}
-
-.sports {
-  color: #B6139F;
-}
-
-.mindfulness {
-  color: #80FFDB;
-}
-
-.self-organisation {
-  color: #56CFE1;
-}
-
-.studying {
-  color: #4EA8DE;
-}
-
-.nutrition {
-  color: #5E60CE;
-}
-
-.others {
-  color: #7400B8;
-}
-
 // Here is the challenge details card
 
 .challenge-details {
@@ -266,4 +196,142 @@
 
 .duration p {
   margin-bottom: 0.1rem;
+}
+
+// Here is the category card design
+
+.card-category {
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card-category i {
+  margin: 0px 4px 0px 0px;
+}
+
+.sports {
+  color: #B6139F;
+}
+
+.mindfulness {
+  color: #80FFDB;
+}
+
+.self-organisation {
+  color: #56CFE1;
+}
+
+.studying {
+  color: #4EA8DE;
+}
+
+.nutrition {
+  color: #5E60CE;
+}
+
+.others {
+  color: #7400B8;
+}
+
+// Here is the card for the blog posts overview
+
+.card-blog-post {
+  overflow: hidden;
+  height: 80px;
+  background: black;
+  margin-bottom: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-blog-post img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-blog-post h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+  text-decoration: none;
+}
+
+.card-blog-post p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+.card-blog-post .card-blog-infos {
+  height: 100%;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+// Here is the card for the blog posts details
+
+.image-content {
+  background-size: cover;
+  background-position: center;
+  height: 160px;
+  margin-left: -16vw;
+  padding-left: 16vw;
+  margin-right: -16vw;
+  padding-right: 16vw;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-challenge-connected {
+  background-color: black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  color: white;
+  margin: 0px 0px 40px 0px;
+  padding: 4px;
+}
+
+.card-blog-info {
+  color: white;
+  height: 100%;
+  margin: 0px 4px 0px 4px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 8px 6px -8px #9D9D9D;
+  position: relative;
+}
+
+.card-blog-title {
+  height: 40px;
+  width: 100%;
+  padding: 8px 0px 2px 8px;
+  border: 1px solid #9D9D9D;
+  box-shadow: 0 8px 6px -8px #9D9D9D;
+  display: flex;
+  align-items: end;
+  justify-content: flex-start;
+
+}
+
+.card-blog-category {
+  background-color: black;
+  position: absolute;
+  left: 0px;
+  top: -16px;
+  height: 24px;
+  padding: 4px;
 }

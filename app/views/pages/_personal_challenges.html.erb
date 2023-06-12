@@ -18,31 +18,29 @@
           <div class="card-challenge-progress">
             <div class="card-challenge-icon-title">
 
-
-            <div class="card-challenge-icon">
-              <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
-              <% if participation.challenge.category == "sports" %>
-                <i class="fa-solid fa-person-running sports"></i>
-              <% elsif participation.challenge.category == "mindfulness" %>
-                <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
-              <% elsif participation.challenge.category == "self-organisation" %>
-                <i class="fa-solid fa-clipboard-list self-organisation"></i>
-              <% elsif participation.challenge.category == "studying" %>
-                <i class="fa-solid fa-book-open-cover studying"></i>
-              <% elsif participation.challenge.category == "nutrition" %>
-                <i class="fa-solid fa-glass-water nutrition"></i>
-              <% elsif participation.challenge.category == "others" %>
-                <i class="fa-solid fa-rocket others"></i>
-                <% end %>
-            </div>
-
-
+              <div class="card-challenge-icon">
+                <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
+                <% if participation.challenge.category == "sports" %>
+                  <i class="fa-solid fa-person-running sports"></i>
+                <% elsif participation.challenge.category == "mindfulness" %>
+                  <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+                <% elsif participation.challenge.category == "self-organisation" %>
+                  <i class="fa-solid fa-clipboard-list self-organisation"></i>
+                <% elsif participation.challenge.category == "studying" %>
+                  <i class="fa-solid fa-book studying"></i>
+                <% elsif participation.challenge.category == "nutrition" %>
+                  <i class="fa-solid fa-glass-water nutrition"></i>
+                <% elsif participation.challenge.category == "others" %>
+                  <i class="fa-solid fa-rocket others"></i>
+                  <% end %>
+              </div>
 
               <div class="card-challenge-title">
-                  <p> <%= participation.challenge.title %> </p>
+                <%= participation.challenge.title %>
               </div>
             </div>
             <div class="card-challenge-progress-boxes">
+
 
 
 
@@ -79,7 +77,6 @@
                         <div class = "completion">
                                           </div>
                   <% end %>
-
             </div>
       <% end %>
             <% # button  %>
