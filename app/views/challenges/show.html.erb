@@ -74,17 +74,31 @@
   </div>
 </div>
 
-<div class="underlined-headline">
-  <h2>Your progress</h2>
-  <div class="headline"></div>
-</div>
 
-<div>Here has to be the calendar</div>
-<%= render "calender"  %>
 
+<% #kalender %>
+  <% if current_user %>
+    <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+      <div class="underlined-headline">
+        <h2>Your progress</h2>
+        <div class="headline"></div>
+      </div>
+      <%= render "calender"  %>
+    <% end %>
+
+
+<%# button if your participation is there %>
+<% if @participation.first %>
+            <div>
+             <%= simple_form_for [@participation.first , @new_completion] do |f| %>
+               <%= button_tag type: 'submit', class: "check-button" do %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+               <% end %>
+             <% end %>
+             </div>
+<% end %>
 
 <% # showing the join or unjoin method %>
-<% if current_user %>
 <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
 
   <p>You're part of this challenge</p>
@@ -97,8 +111,8 @@
       <%= f.submit "Join this challenge", class: "btn-black" %>
     <% end %>
 <% end %>
-<% end %>
 
+  <% end %>
 
 <% # Deleting or Editing the challenge %>
 <% if @challenge.user = current_user %>

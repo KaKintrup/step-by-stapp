@@ -1,13 +1,13 @@
-<div class="underlined-headline">
-  <h1>Blog</h1>
-  <div class="headline"></div>
-</div>
+<%@posts = BlogPost.all.sample(5) %>
 
-
+  <div class="underlined-headline">
+    <h2>Latest Posts</h2>
+    <div class="headline"></div>
+  </div>
 
 <% @posts.each do  |post|%>
 
-  <%= link_to blog_post_path(post.id) do %>
+  <%= link_to blog_post_path(post) do %>
     <div class="card-blog-post">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
       <div class="card-blog-infos">
@@ -24,5 +24,3 @@
   <% end %>
 <hr>
 <% end %>
-
-<%= link_to "Add a new post", new_blog_post_path, class: "btn-blue d-flex" %>
