@@ -1,6 +1,7 @@
                    <% markers =  current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions) %>
                   <% one_month = (Date.today.at_beginning_of_month..Date.today.at_end_of_month).to_a %>
 <div class="card-challenge-progress-boxes-month-start"> <div><%= one_month.first.beginning_of_week %></div>
+                  <% completion = 0 %>
                   <% one_month.each do |day| %>
                   <% counter = 0 %>
                     <% # es sei denn marker day = wie der day  %>
@@ -12,26 +13,61 @@
                             <% end %>
                         <% end %>
                     <% if counter.positive? %>
-                       <% if day.wday == 0 %>
-                          <div class = "checked"> </div>
-                          </div>
-                          <br>
-                          <div class="card-challenge-progress-boxes-month">
-                          <div><%= day.tomorrow %></div>
-                       <% else %>
-                          <div class = "checked"> </div>
-                       <% end %>
+                            <% if day.wday == 0 && @challenge.weekly_goal <=  completion %>
+                                <div class = "checked"> </div>
+                                <% completion += 1 %>
+                               <div class = "completion-done">
+                                </div>
+                               </div>
+                                <br>
+                                <% completion = 0 %>
+                                <div class="card-challenge-progress-boxes-month">
+                                <div><%= day.tomorrow %></div>
+                            <% elsif day.wday == 0 %>
+                                <div class = "checked"> </div>
+                                <% completion += 1 %>
+                                <div class = "completion">
+                                </div>
+                                          </div>
+                                <br>
+                                <% completion = 0 %>
+                                <div class="card-challenge-progress-boxes-month">
+                                <div><%= day.tomorrow %></div>
+                            <% else %>
+                                <div class = "checked"> </div>
+                                <% completion += 1 %>
+                            <% end %>
                     <% else %>
-                      <% if day.wday == 0 %>
-                          <div class = "checkbox"> </div>
-                        </div>
-                          <br>
-                          <div class="card-challenge-progress-boxes-month">
-                          <div><%= day.tomorrow %></div>
-                       <% else %>
-                          <div class = "checkbox"> </div>
-                       <% end %>
+                            <% if day.wday == 0 && @challenge.weekly_goal <=  completion %>
+                                <div class = "checkbox"> </div>
+                                <div class = "completion-done">
+                               </div>
+                                </div>
+                               <% completion = 0 %>
+                                <br>
+                                <div class="card-challenge-progress-boxes-month">
+                                <div><%= day.tomorrow %></div>
+
+                            <% elsif day.wday == 0 %>
+                                <div class = "checkbox"> </div>
+                              <div class = "completion">
+                                          </div>
+                              </div>
+                                <% completion = 0 %>
+                                <br>
+                                <div class="card-challenge-progress-boxes-month">
+                                <div><%= day.tomorrow %></div>
+                            <% else %>
+                                <div class = "checkbox"> </div>
+                            <% end %>
                     <% end %>
+                  <% end %>
+                  <% if @challenge.weekly_goal <=  completion %>
+                        <div class = "completion-done">
+                                        </div>
+                  <% else %>
+                        <div class = "completion">
+                                          </div>
                   <% end %>
 
 </div>
