@@ -15,14 +15,14 @@
           <div class="card-challenge-infos"></div>
           <div class="card-challenge-progress">
             <div class="card-challenge-icon-title">
-              
-              
+
+
             <div class="card-challenge-icon">
-              <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> --> 
+              <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
               <% if participation.challenge.category == "sports" %>
                 <i class="fa-solid fa-person-running sports"></i>
               <% elsif participation.challenge.category == "mindfulness" %>
-                <i class="fa-sharp fa-solid fa-spa mindfulness"></i>                  
+                <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
               <% elsif participation.challenge.category == "self-organisation" %>
                 <i class="fa-solid fa-clipboard-list self-organisation"></i>
               <% elsif participation.challenge.category == "studying" %>
@@ -47,6 +47,7 @@
                  <% #adding the logic to the check boxes %>
                  <% markers = ChallengeCompletion.all %>
                   <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
+                  <% completion = 0 %>
                   <% one_week.each do |day| %>
                   <% counter = 0 %>
                   <% # es sei denn marker day = wie der day  %>
@@ -56,6 +57,7 @@
                                 <% end %>
                            <% end %>
                       <% if counter.positive? %>
+                      <% completion += 1 %>
                       <div class = "checked">
                                         </div>
                       <% else %>
@@ -64,6 +66,14 @@
                       <% end %>
 
 
+                  <% end %>
+                  <% #now the completion  %>
+                  <% if participation.challenge.weekly_goal == completion %>
+                        <div class = "completion-done">
+                                        </div>
+                  <% else %>
+                        <div class = "completion">
+                                          </div>
                   <% end %>
 
             </div>
