@@ -87,6 +87,18 @@
   padding: 2px;
 }
 
+.card-challenge-progress-boxes-month-start {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px;
+}
+
+.card-challenge-progress-boxes-month {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2px;
+}
+
 .checkbox {
   background-color: #54525E;
   height: 20px;
