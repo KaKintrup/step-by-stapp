@@ -39,6 +39,7 @@ class ChallengesController < ApplicationController
     @new_participation = ChallengeParticipation.new
     if current_user
       @participation = ChallengeParticipation.where(challenge_id: @challenge.id, user_id: current_user.id)
+      @new_completion = ChallengeCompletion.new
     end
   end
 

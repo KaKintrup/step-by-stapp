@@ -13,7 +13,7 @@
   <em> <%= @post.descripton %> </em>
 
   <hr>
-  
+
   <%= @post.text %>
 
   <% @post.user.email %>
@@ -23,7 +23,10 @@
     <div class="headline"></div>
   </div>
 
-  <%= link_to challenge_path(@post.challenge_number) do %>
+
+
+<% if @post.challenge_number %>
+      <%= link_to challenge_path(@post.challenge_number) do %>
     <div class="card-challenge-connected">
       <% if @post.challenge_number %>
       <% @challenge = Challenge.find(@post.challenge_number) %>
@@ -43,7 +46,7 @@
           <% elsif @challenge.category == "self-organisation" %>
             <div class="self-organisation">
               <i class="fa-solid fa-clipboard-list self-organisation"></i>
-              <em> <%= @challenge.category %> </em> 
+              <em> <%= @challenge.category %> </em>
             </div>
           <% elsif @challenge.category == "studying" %>
             <div class="studying">
@@ -68,7 +71,8 @@
       </div>
       <% end %>
     </div>
-  <% end %>
+      <% end %>
+<% end %>
 
 <% # Deleting or Editing the post %>
 <% if @post.user = current_user %>

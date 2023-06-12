@@ -1,5 +1,5 @@
 
-<% @personal_participation = ChallengeParticipation.all%>
+<% @personal_participation = ChallengeParticipation.all.sample(5)%>
 <% new_completion = ChallengeCompletion.new %>
 
 <!-- New card design -->

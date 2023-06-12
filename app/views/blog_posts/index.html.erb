@@ -3,10 +3,9 @@
   <div class="headline"></div>
 </div>
 
-
 <% @posts.each do  |post|%>
 
-  <%= link_to blog_post_path(post) do %>
+  <%= link_to blog_post_path(post.id) do %>
     <div class="card-blog-post">
       <%= cl_image_tag post.photo.key%>
       <div class="card-blog-infos">
