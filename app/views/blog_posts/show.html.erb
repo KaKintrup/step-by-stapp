@@ -4,19 +4,69 @@
   <div class="headline"></div>
 </div>
 
-<% if @post.challenge_number %>
-<% @challenge = Challenge.find(@post.challenge_number) %>
-<%= @challenge.title %>
-<%= link_to "See the linked Challenge" , challenge_path(@post.challenge_number), class: "btn-blue" %>
-<% end %>
 
-<div>Here has to be the card for the post details</div>
+  <div class="image-content" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg)">
+  </div>
 
-<ul>
-  <li><%= @post.descripton %></li>
-  <li><%= @post.text %></li>
-  <li><% @post.user.email %></li>
-</ul>
+  <em> <%= @post.descripton %> </em>
+
+  <hr>
+  
+  <%= @post.text %>
+
+  <% @post.user.email %>
+
+  <div class="underlined-headline">
+    <h2>Connected challenge</h2>
+    <div class="headline"></div>
+  </div>
+
+  <%= link_to challenge_path(@post.challenge_number) do %>
+    <div class="card-challenge-connected">
+      <% if @post.challenge_number %>
+      <% @challenge = Challenge.find(@post.challenge_number) %>
+      <div class="card-blog-info">
+        <div class="card-blog-category">
+
+          <% if @challenge.category == "sports" %>
+            <div class="sports">
+              <i class="fa-solid fa-person-running sports"></i>
+              <em> <%= @challenge.category %> </em>
+            </div>
+          <% elsif @challenge.category == "mindfulness" %>
+            <div class="mindfulness">
+              <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+              <em> <%= @challenge.category %> </em>
+            </div>
+          <% elsif @challenge.category == "self-organisation" %>
+            <div class="self-organisation">
+              <i class="fa-solid fa-clipboard-list self-organisation"></i>
+              <em> <%= @challenge.category %> </em> 
+            </div>
+          <% elsif @challenge.category == "studying" %>
+            <div class="studying">
+              <i class="fa-solid fa-book studying"></i>
+              <em> <%= @challenge.category %> </em>
+            </div>
+          <% elsif @challenge.category == "nutrition" %>
+            <div class="nutrition">
+              <i class="fa-solid fa-glass-water nutrition"></i>
+              <em> <%= @challenge.category %> </em>
+            </div>
+          <% elsif @challenge.category == "others" %>
+            <div class="others">
+              <i class="fa-solid fa-rocket others"></i>
+              <em> <%= @challenge.category %> </em>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-blog-title">
+        <%= @challenge.title %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
 
 <% # Deleting or Editing the post %>
 <% if @post.user = current_user %>
@@ -26,4 +76,4 @@
 <% end %>
 
 
-<%= link_to "See all ", blog_posts_path, class: "btn-blue" %>
+<%= link_to "Back to blog", blog_posts_path, class: "btn-blue" %>
