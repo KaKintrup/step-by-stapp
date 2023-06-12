@@ -3,16 +3,26 @@
   <div class="headline"></div>
 </div>
 
+        
+
 <% @posts.each do  |post|%>
 
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-    <h2><%= post.title %> </h2>
-    <p><% post.descripton %></p>
-  </div>
-</div>
-<%= link_to "See this blog post", blog_post_path(post), class: "btn-blue d-flex" %>
+  <%= link_to blog_post_path(post) do %>
+    <div class="card-blog-post">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-blog-infos">
+        <h2><%= post.title %> </h2>
+        <p> <em> <%= post.descripton %> </em> </p>
+        <p>
+          <% if post.challenge_number %>
+            <% @challenge = Challenge.find(post.challenge_number) %>
+            <%= @challenge.title %>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<hr>
 <% end %>
 
-<%= link_to "Add a new post", new_blog_post_path, class: "btn-black d-flex" %>
+<%= link_to "Add a new post", new_blog_post_path, class: "btn-blue d-flex" %>

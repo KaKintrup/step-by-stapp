@@ -5,10 +5,10 @@
 
 <div>
   <%= simple_form_for(@post) do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, class: "form-field" %>
+    <%= f.input :descripton, label: "Subtitle" %>
     <%= f.input :text %>
-    <%= f.input :descripton, label: "Description" %>
-    <%= f.input :challenge_number, label: "Challenge", collection: Challenge.all, input_html: {}%>
-    <%= f.submit %>
+    <%= f.input :challenge_number, label: "Related challenge (if wanted)", collection: Challenge.all, input_html: {}%>
+    <%= f.button :submit, "Save blog post", class: "btn-blue" %>
   <% end %>
- </div>
+</div>
