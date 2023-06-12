@@ -17,11 +17,11 @@
           <div class="card-challenge-progress">
             <div class="card-challenge-icon-title">
               <div class="card-challenge-icon">
-                <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> --> 
+                <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
                 <% if challenge.category == "sports" %>
                   <i class="fa-solid fa-person-running sports"></i>
                 <% elsif challenge.category == "mindfulness" %>
-                  <i class="fa-sharp fa-solid fa-spa mindfulness"></i>                  
+                  <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
                 <% elsif challenge.category == "self-organisation" %>
                   <i class="fa-solid fa-clipboard-list self-organisation"></i>
                 <% elsif challenge.category == "studying" %>
@@ -37,24 +37,9 @@
               </div>
             </div>
             <div class="card-challenge-progress-boxes">
-              <div class="checkbox mon">
-              </div>
-              <div class="checkbox tue">
-              </div>
-              <div class="checkbox wed">
-              </div>
-              <div class="checkbox thu">
-              </div>
-              <div class="checkbox fri">
-              </div>
-              <div class="checkbox sat">
-              </div>
-              <div class="checkbox sun">
-              </div>
+             <%= challenge.description %>
             </div>
-            <div href="#" class="check-button">
-              <%= image_tag "check.png", height: 32, width: 32 %>
-            </div>
+
           </div>
         </div>
       <% end %>
