@@ -7,12 +7,6 @@
 <% new_completion = ChallengeCompletion.new %>
 
 <!-- New card design -->
-
-  <div class="underlined-headline">
-    <h2>My challenges</h2>
-    <div class="headline"></div>
-  </div>
-
 <div class="cards-challenges my-5">
   <% @personal_participation.each do  |participation|%>
     <% if participation.user = current_user %>
@@ -100,4 +94,3 @@
     <% end %>
   <% end %>
 </div>
-

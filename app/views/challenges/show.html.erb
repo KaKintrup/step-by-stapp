@@ -74,16 +74,18 @@
   </div>
 </div>
 
+<% #kalender %>
+  <% if current_user %>
 <div class="underlined-headline">
   <h2>Your progress</h2>
   <div class="headline"></div>
 </div>
 
-<div>Here has to be the calendar</div>
-<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
-  <%= render "calender"  %>
 
-<% end %>
+    <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+      <%= render "calender"  %>
+    <% end %>
+  <% end %>
 
 
 <% # showing the join or unjoin method %>
