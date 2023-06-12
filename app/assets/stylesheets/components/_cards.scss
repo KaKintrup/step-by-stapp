@@ -94,6 +94,18 @@ a {
   padding: 2px;
 }
 
+.card-challenge-progress-boxes-month-start {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px;
+}
+
+.card-challenge-progress-boxes-month {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2px;
+}
+
 .checkbox {
   background-color: #54525E;
   height: 20px;
@@ -103,7 +115,23 @@ a {
 }
 
 .checked {
-  background-color: #ff52b7;
+  background-color: #52d1ff;
+  height: 20px;
+  width: 20px;
+  margin: 0px 8px 0px 8px;
+  border-radius: 3px;
+}
+
+.completion {
+  background-color: #ffffff;
+  height: 20px;
+  width: 20px;
+  margin: 0px 8px 0px 8px;
+  border-radius: 3px;
+}
+
+.completion-done {
+  background-color: #01ad7d;
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
@@ -119,10 +147,10 @@ a {
   text-decoration: none;
   display: flex;
   justify-content: space-evenly;
+  border: none;
 }
 
-
-// Here is the challenge details card 
+// Here is the challenge details card
 
 .challenge-details {
   background-color: black;
@@ -206,9 +234,6 @@ a {
 .others {
   color: #7400B8;
 }
-
-
-
 
 // Here is the card for the blog posts overview
 
