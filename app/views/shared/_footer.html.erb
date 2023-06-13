@@ -17,7 +17,7 @@
       <i class="fa-solid fa-newspaper"></i>
     <% end %>
 
-    <%= link_to challenge_participations_path, class: "nav-link avatar-picture" do %>
+    <%= link_to challenge_participations_path, class: "nav-link avatar" do %>
       <% if current_user %>
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key %>

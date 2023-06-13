@@ -38,14 +38,17 @@
               
             </div>
             <div class="card-public-challenge-description">
-            <p class="user-name">by <%= challenge.user.name %> </p>
-              <div><%= challenge.description %></div>
-              <div class="start-date"> 
-                <p>Starting: <%= challenge.start_date %></p>
-              </div>
+            
+            <div class="user-name">
               <% if challenge.user.photo.attached? %>
-                <div class="avatar-picture"><%= cl_image_tag challenge.user.photo.key %></div>
+                <div class="avatar-small"><%= cl_image_tag challenge.user.photo.key %></div>
               <% end %>
+              by <%= challenge.user.name %> 
+            </div>
+              <div><%= challenge.description %></div>
+              <div class="end-date"> 
+                <p>Until: <%= challenge.end_date %></p>
+              </div>
             </div>
             
             
