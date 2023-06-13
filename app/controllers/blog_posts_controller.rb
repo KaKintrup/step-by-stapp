@@ -43,7 +43,7 @@ class BlogPostsController < ApplicationController
   private
 
   def post_params
-    params.require(:blog_post).permit([:title, :text, :challenge_number, :descripton])
+    params.require(:blog_post).permit([:title, :text, :challenge_number, :descripton, :photo])
   end
 
 end

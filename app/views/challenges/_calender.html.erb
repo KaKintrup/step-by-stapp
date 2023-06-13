@@ -28,9 +28,12 @@
                         <% end %>
                     <% if counter.positive? %>
                             <% if day.wday == 0 && @challenge.weekly_goal <=  completion %>
-                                <div class = "checked"> </div>
+                                <div class = "checked">
+                                </div>
                                 <% completion += 1 %>
-                               <div class="completion-done">
+
+                                <div class = "completion-done">
+
                                 </div>
                                </div>
                                 <br>
@@ -38,17 +41,17 @@
                                 <div class="card-challenge-progress-boxes-month">
                                 <div><%= "cw #{day.tomorrow.cweek}" %></div>
                             <% elsif day.wday == 0 %>
-                                <div class = "checked"> </div>
-                                <% completion += 1 %>
-                                <div class = "completion">
-                                </div>
-                                          </div>
+                                <div class = "checked"></div>
+                                    <% completion += 1 %>
+                                <div class = "completion"></div></div>
                                 <br>
                                 <% completion = 0 %>
                                 <div class="card-challenge-progress-boxes-month">
                                 <div><%= "cw #{day.tomorrow.cweek}" %></div>
                             <% else %>
-                                <div class = "checked"> </div>
+                                <div class = "checked"> 
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
                                 <% completion += 1 %>
                             <% end %>
                     <% else %>
