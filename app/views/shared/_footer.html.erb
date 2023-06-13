@@ -2,22 +2,30 @@
   <div class="footer-links">
 
     <%= link_to root_path, class: "nav-link" do %>
-     <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-house"></i>
     <% end %>
 
     <%= link_to challenges_path, class: "nav-link" do %>
-     <i class="fa-solid fa-users"></i>
+      <i class="fa-solid fa-users"></i>
     <% end %>
 
     <%= link_to new_challenge_path, class: "nav-link" do %>
-     <i class="fa-solid fa-circle-plus fa-2x neon-icon my-3"></i>
+      <i class="fa-solid fa-circle-plus fa-2x neon-icon my-3"></i>
     <% end %>
 
     <%= link_to blog_posts_path, class: "nav-link" do %>
-     <i class="fa-solid fa-newspaper"></i>
+      <i class="fa-solid fa-newspaper"></i>
     <% end %>
 
-    <%= link_to challenge_participations_path, class: "nav-link" do %>
-     <i class="fa-solid fa-user-secret"></i>
+    <%= link_to challenge_participations_path, class: "nav-link avatar-picture" do %>
+      <% if current_user %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key %>
+          <% else %>
+            <i class="fa-solid fa-user"></i>
+          <% end %>
+      <% else %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
     <% end %>
 </div>
