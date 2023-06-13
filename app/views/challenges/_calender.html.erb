@@ -1,7 +1,21 @@
+
                    <% markers =  current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions) %>
                   <% one_month = (Date.today.at_beginning_of_month..Date.today.at_end_of_month).to_a %>
-<div class="card-challenge-progress-boxes-month-start"> <div><%= one_month.first.beginning_of_week %></div>
+
+
+
+                  <%= Date::MONTHNAMES[Date.today.month] %>
+                  
+              <div class="card-challenge-progress-boxes-month">
+                  <div><%= "cw #{one_month.first.beginning_of_month.cweek}" %></div>
+                  <% #extra boxes %>
+                  <% for _ in (2..one_month.first.wday) do %>
+                  <div class="extra-boxes"> </div>
+                  <% end %>
+
                   <% completion = 0 %>
+
+
                   <% one_month.each do |day| %>
                   <% counter = 0 %>
                     <% # es sei denn marker day = wie der day  %>
@@ -17,13 +31,15 @@
                                 <div class = "checked">
                                 </div>
                                 <% completion += 1 %>
+
                                 <div class = "completion-done">
+
                                 </div>
                                </div>
                                 <br>
                                 <% completion = 0 %>
                                 <div class="card-challenge-progress-boxes-month">
-                                <div><%= day.tomorrow %></div>
+                                <div><%= "cw #{day.tomorrow.cweek}" %></div>
                             <% elsif day.wday == 0 %>
                                 <div class = "checked"></div>
                                     <% completion += 1 %>
@@ -31,7 +47,7 @@
                                 <br>
                                 <% completion = 0 %>
                                 <div class="card-challenge-progress-boxes-month">
-                                <div><%= day.tomorrow %></div>
+                                <div><%= "cw #{day.tomorrow.cweek}" %></div>
                             <% else %>
                                 <div class = "checked"> 
                                     <i class="fa-solid fa-check"></i>
@@ -47,7 +63,7 @@
                                <% completion = 0 %>
                                 <br>
                                 <div class="card-challenge-progress-boxes-month">
-                                <div><%= day.tomorrow %></div>
+                                <div><%="cw #{day.tomorrow.cweek}" %></div>
 
                             <% elsif day.wday == 0 %>
                                 <div class = "checkbox"> </div>
@@ -57,12 +73,23 @@
                                 <% completion = 0 %>
                                 <br>
                                 <div class="card-challenge-progress-boxes-month">
-                                <div><%= day.tomorrow %></div>
+                                <div><%="cw #{day.tomorrow.cweek}" %></div>
                             <% else %>
                                 <div class = "checkbox"> </div>
                             <% end %>
                     <% end %>
                   <% end %>
+
+
+
+                  <% #extra boxes %>
+
+                  <% for _ in (one_month.last.wday..6) do %>
+                    <div class="extra-boxes"> </div>
+                  <% end %>
+
+
+                  <% #completion box %>
                   <% if @challenge.weekly_goal <=  completion %>
                         <div class = "completion-done">
                                         </div>
@@ -70,5 +97,8 @@
                         <div class = "completion">
                                           </div>
                   <% end %>
+
+
+
 
 </div>

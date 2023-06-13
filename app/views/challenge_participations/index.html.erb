@@ -79,6 +79,15 @@
             </div>
       <% end %>
             <% # button  %>
+            <% button_seeable = true %>
+            <% participation.challenge_completions.each do |completion| %>
+                <%if completion.created_at.to_date == Date.today %>
+                    <% button_seeable = false %>
+                <% end %>
+            <% end %>
+
+        <% if button_seeable %>
+
             <div>
              <%= simple_form_for [participation , new_completion] do |f| %>
                <%= button_tag type: 'submit', class: "check-button" do %>
@@ -87,6 +96,7 @@
              <% end %>
              </div>
 
+        <% end %>
 
 
 
