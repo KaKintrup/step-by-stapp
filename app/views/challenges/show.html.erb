@@ -95,6 +95,8 @@
 <% else %>
 
 <%# button if your participation is there %>
+      <% if @paricipating %>
+
             <% # button  %>
             <% button_seeable = true %>
             <% @participation.first.challenge_completions.each do |completion| %>
@@ -113,6 +115,7 @@
              <% end %>
              </div>
 
+      <% end %>
         <% end %>
 
 <% # showing the join or unjoin method %>
