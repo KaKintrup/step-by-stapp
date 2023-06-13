@@ -95,11 +95,13 @@
 <% else %>
 
 <%# button if your participation is there %>
-      <% if @paricipating %>
+
+      <% if !@participation.empty? %>
 
             <% # button  %>
             <% button_seeable = true %>
             <% @participation.first.challenge_completions.each do |completion| %>
+
                 <%if completion.created_at.to_date == Date.today %>
                     <% button_seeable = false %>
                 <% end %>
