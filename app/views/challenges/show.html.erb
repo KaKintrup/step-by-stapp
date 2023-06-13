@@ -20,7 +20,6 @@
     <% elsif @challenge.category == "self-organisation" %>
       <i class="fa-solid fa-clipboard-list self-organisation"></i>
       <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-
     <% elsif @challenge.category == "studying" %>
       <i class="fa-solid fa-book-open-cover studying"></i>
       <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
@@ -78,7 +77,7 @@
 
 <% #kalender %>
   <% if current_user %>
-    <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+    <% if current_user.joined_challenges.include?(@challenge) && !@participation.empty? %>
       <div class="underlined-headline">
         <h2>Your progress</h2>
         <div class="headline"></div>
@@ -121,7 +120,7 @@
         <% end %>
 
 <% # showing the join or unjoin method %>
-<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+<% if current_user.joined_challenges.include?(@challenge) && !@participation.empty? %>
             <% # linkt to the chat %>
             <%= link_to "See community chat", challenge_messages_path(@challenge), class: "btn-blue" %>
 
@@ -139,7 +138,7 @@
 
 
 <% # Deleting or Editing the challenge %>
-<% if @challenge.user = current_user %>
+<% if @challenge.user == current_user %>
     <%= link_to "Edit challenge", edit_challenge_path, class: "btn-black" %>
     <%= link_to "Delete this challenge", challenge_path(@challenge),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" }, class: "btn-black" %>
