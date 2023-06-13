@@ -86,6 +86,13 @@
       <%= render "calender"  %>
     <% end %>
 
+<%  #adding a finishing time %>
+<% if Date.today < @challenge.end_date  %>
+
+<p>The Challenge is finished. Start a new One! </p>
+<%= render "pages/public_challenges_preview" %>
+
+<% else %>
 
 <%# button if your participation is there %>
 <% if @participation.first %>
@@ -112,7 +119,6 @@
     <% end %>
 <% end %>
 
-  <% end %>
 
 <% # Deleting or Editing the challenge %>
 <% if @challenge.user = current_user %>
@@ -121,5 +127,9 @@
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" }, class: "btn-black" %>
 <% end %>
 
+  <% end %>
 
 <%= link_to "See all challenges", challenges_path, class: "btn-blue" %>
+<% #Date.today <= @challenge.end_date %>
+
+<% end %>

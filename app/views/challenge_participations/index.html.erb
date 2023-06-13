@@ -78,6 +78,10 @@
             </div>
       <% end %>
             <% # button  %>
+            <% participation.challenge_completions.each do |completion| %>
+            <%= f.created_at.to_date == Date.today %>
+            <% raise %>
+            <% end %>
             <div>
              <%= simple_form_for [participation , new_completion] do |f| %>
                <%= button_tag type: 'submit', class: "check-button" do %>
