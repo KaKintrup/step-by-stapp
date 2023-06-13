@@ -10,13 +10,13 @@
   <% @challenges.each do  |challenge|%>
     <% if challenge.public %>
       <%= link_to challenge_path(challenge) do %>
-        <div class="card-challenge" >
-          <div class="card-challenge-infos">
+        <div class="card-public-challenge" >
+          <div class="card-public-challenge-infos">
             <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
           </div>
-          <div class="card-challenge-progress">
-            <div class="card-challenge-icon-title">
-              <div class="card-challenge-icon">
+          <div class="card-public-challenge-progress">
+            <div class="card-public-challenge-icon-title">
+              <div class="card-public-challenge-icon">
                 <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
                 <% if challenge.category == "sports" %>
                   <i class="fa-solid fa-person-running sports"></i>
@@ -32,13 +32,23 @@
                   <i class="fa-solid fa-rocket others"></i>
                 <% end %>
               </div>
-              <div class="card-challenge-title">
+              <div class="card-public-challenge-title">
                 <%= challenge.title %>
               </div>
+              
             </div>
-            <div class="card-challenge-progress-boxes">
-             <%= challenge.description %>
+            <div class="card-public-challenge-description">
+            <p class="user-name">by <%= challenge.user.name %> </p>
+              <div><%= challenge.description %></div>
+              <div class="start-date"> 
+                <p>Starting: <%= challenge.start_date %></p>
+              </div>
+              <% if challenge.user.photo.attached? %>
+                <div class="avatar-picture"><%= cl_image_tag challenge.user.photo.key %></div>
+              <% end %>
             </div>
+            
+            
 
           </div>
         </div>
