@@ -87,7 +87,7 @@
     <% end %>
 
 <%  #adding a finishing time %>
-<% if Date.today < @challenge.end_date  %>
+<% if Date.today > @challenge.end_date  %>
 
 <p>The Challenge is finished. Start a new One! </p>
 <%= render "pages/public_challenges_preview" %>
@@ -95,15 +95,25 @@
 <% else %>
 
 <%# button if your participation is there %>
-<% if @participation.first %>
+            <% # button  %>
+            <% button_seeable = true %>
+            <% @participation.first.challenge_completions.each do |completion| %>
+                <%if completion.created_at.to_date == Date.today %>
+                    <% button_seeable = false %>
+                <% end %>
+            <% end %>
+
+        <% if button_seeable %>
+
             <div>
-             <%= simple_form_for [@participation.first , @new_completion] do |f| %>
+             <%= simple_form_for [@participation.first, @new_completion] do |f| %>
                <%= button_tag type: 'submit', class: "check-button" do %>
                   <i class="fa-solid fa-check" aria-hidden="true"></i>
                <% end %>
              <% end %>
              </div>
-<% end %>
+
+        <% end %>
 
 <% # showing the join or unjoin method %>
 <% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
