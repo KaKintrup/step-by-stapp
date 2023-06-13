@@ -128,6 +128,9 @@
     <%= link_to "Leave this challenge", challenge_challenge_participation_path(@challenge, @participation.first),
                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 
+            <% # linkt to the chat %>
+            <%= link_to "See community chat", challenge_messages_path(@challenge), class: "btn-blue" %>
+
 <% else %>
     <%= simple_form_for [@challenge, @new_participation] do |f| %>
       <%= f.submit "Join this challenge", class: "btn-black" %>

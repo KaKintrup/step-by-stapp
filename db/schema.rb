@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_144946) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_120116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_144946) do
     t.index ["user_id"], name: "index_challenges_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "challenge_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_messages_on_challenge_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -104,4 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_144946) do
   add_foreign_key "challenge_participations", "challenges"
   add_foreign_key "challenge_participations", "users"
   add_foreign_key "challenges", "users"
+  add_foreign_key "messages", "challenges"
+  add_foreign_key "messages", "users"
 end
