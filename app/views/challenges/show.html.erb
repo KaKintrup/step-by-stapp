@@ -20,7 +20,6 @@
     <% elsif @challenge.category == "self-organisation" %>
       <i class="fa-solid fa-clipboard-list self-organisation"></i>
       <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-
     <% elsif @challenge.category == "studying" %>
       <i class="fa-solid fa-book-open-cover studying"></i>
       <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
@@ -74,38 +73,80 @@
   </div>
 </div>
 
-<div class="underlined-headline">
-  <h2>Your progress</h2>
-  <div class="headline"></div>
-</div>
 
-<div>Here has to be the calendar</div>
-<%= render "calender"  %>
 
+<% #kalender %>
+  <% if current_user %>
+    <% if current_user.joined_challenges.include?(@challenge) && !@participation.empty? %>
+      <div class="underlined-headline">
+        <h2>Your progress</h2>
+        <div class="headline"></div>
+      </div>
+      <%= render "calender"  %>
+    <% end %>
+
+<%  #adding a finishing time %>
+<% if Date.today > @challenge.end_date  %>
+
+<p>The Challenge is finished. Start a new One! </p>
+<%= render "pages/public_challenges_preview" %>
+
+<% else %>
+
+<%# button if your participation is there %>
+
+      <% if !@participation.empty? %>
+
+            <% # button  %>
+            <% button_seeable = true %>
+            <% @participation.first.challenge_completions.each do |completion| %>
+
+                <%if completion.created_at.to_date == Date.today %>
+                    <% button_seeable = false %>
+                <% end %>
+            <% end %>
+
+        <% if button_seeable %>
+
+            <div>
+             <%= simple_form_for [@participation.first, @new_completion] do |f| %>
+               <%= button_tag type: 'submit', class: "check-button" do %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+               <% end %>
+             <% end %>
+             </div>
+
+      <% end %>
+        <% end %>
 
 <% # showing the join or unjoin method %>
-<% if current_user %>
-<% if current_user.challenges.include?(@challenge) && !@participation.empty? %>
+<% if current_user.joined_challenges.include?(@challenge) && !@participation.empty? %>
+            <% # linkt to the chat %>
+            <%= link_to "See community chat", challenge_messages_path(@challenge), class: "btn-blue" %>
 
   <p>You're part of this challenge</p>
 
     <%= link_to "Leave this challenge", challenge_challenge_participation_path(@challenge, @participation.first),
                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 
+
 <% else %>
     <%= simple_form_for [@challenge, @new_participation] do |f| %>
       <%= f.submit "Join this challenge", class: "btn-black" %>
     <% end %>
 <% end %>
-<% end %>
 
 
 <% # Deleting or Editing the challenge %>
-<% if @challenge.user = current_user %>
+<% if @challenge.user == current_user %>
     <%= link_to "Edit challenge", edit_challenge_path, class: "btn-black" %>
     <%= link_to "Delete this challenge", challenge_path(@challenge),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" }, class: "btn-black" %>
 <% end %>
 
+  <% end %>
 
 <%= link_to "See all challenges", challenges_path, class: "btn-blue" %>
+<% #Date.today <= @challenge.end_date %>
+
+<% end %>

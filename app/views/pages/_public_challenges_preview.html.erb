@@ -1,22 +1,21 @@
+<% @challenges = Challenge.all.sample(5)   %>
+
 <div class="underlined-headline">
   <h1> Public challenges</h1>
   <div class="headline"></div>
 </div>
 
-<!-- Challenge card design -->
-
-
 <div class="cards-challenges my-5">
   <% @challenges.each do  |challenge|%>
     <% if challenge.public %>
       <%= link_to challenge_path(challenge) do %>
-        <div class="card-public-challenge" >
-          <div class="card-public-challenge-infos">
+        <div class="card-challenge" >
+          <div class="card-challenge-infos">
             <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
           </div>
-          <div class="card-public-challenge-progress">
-            <div class="card-public-challenge-icon-title">
-              <div class="card-public-challenge-icon">
+          <div class="card-challenge-progress">
+            <div class="card-challenge-icon-title">
+              <div class="card-challenge-icon">
                 <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
                 <% if challenge.category == "sports" %>
                   <i class="fa-solid fa-person-running sports"></i>
@@ -32,37 +31,30 @@
                   <i class="fa-solid fa-rocket others"></i>
                 <% end %>
               </div>
-              <div class="card-public-challenge-title">
+              <div class="card-challenge-title">
                 <%= challenge.title %>
               </div>
-              
             </div>
-            <div class="card-public-challenge-description">
-            
-            <div class="user-name">
-              <% if challenge.user.photo.attached? %>
-                <div class="avatar-small"><%= cl_image_tag challenge.user.photo.key %></div>
-              <% end %>
-              by <%= challenge.user.name %> 
-            </div>
-              <div><%= challenge.description %></div>
-              <div class="end-date"> 
-                <p>Until: <%= challenge.end_date %></p>
+            <div class="card-challenge-progress-boxes">
+              <div class="checkbox mon">
+              </div>
+              <div class="checkbox tue">
+              </div>
+              <div class="checkbox wed">
+              </div>
+              <div class="checkbox thu">
+              </div>
+              <div class="checkbox fri">
+              </div>
+              <div class="checkbox sat">
+              </div>
+              <div class="checkbox sun">
               </div>
             </div>
-            
-            
-
+           
           </div>
         </div>
       <% end %>
     <% end %>
   <% end %>
-</div>
-
-<div>
-  <%= link_to "Add a new challenge", new_challenge_path, class: "btn-blue d-flex" %>
-</div>
-<div>
-    <%= link_to "See all my challenges", challenge_participations_path, class: "btn-black d-flex" %>
 </div>

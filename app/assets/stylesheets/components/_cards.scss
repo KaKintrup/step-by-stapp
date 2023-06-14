@@ -24,12 +24,12 @@ a {
 }
 
 
-// Here is the card for the challenges overview
+// Here is the card for the challenges overview (my challenges)
 
 .card-challenge {
   background-color: black;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  margin: 8px 0px 8px 0px;
+  margin: 4px 0px 8px 0px;
   padding: 8px;
 }
 
@@ -38,7 +38,6 @@ a {
   width: 100%;
   padding: 4px;
   border-bottom: 1px solid #9D9D9D;
-  box-shadow: 0 8px 6px -8px #9D9D9D;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -48,6 +47,10 @@ a {
   height: 64px;
   width: 100%;
   padding: 8px 4px 8px 4px;
+  border-right: 1px solid #9D9D9D;
+  border-bottom: 1px solid #9D9D9D;
+  border-left: 1px solid #9D9D9D;
+  box-shadow: 0 8px 6px -8px #9D9D9D;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,7 +110,15 @@ a {
 }
 
 .checkbox {
-  background-color: #54525E;
+  background-color: #9D9D9D;
+  height: 20px;
+  width: 20px;
+  margin: 0px 8px 0px 8px;
+  border-radius: 3px;
+}
+
+.extra-boxes {
+  background-color: #c9c9c9;
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
@@ -115,15 +126,23 @@ a {
 }
 
 .checked {
-  background-color: #52d1ff;
+  background-color: white;
+  color: #5E60CE;
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checked:before {
+  font-weight: 900;
 }
 
 .completion {
-  background-color: #ffffff;
+  background-color: #54525E;
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
@@ -150,11 +169,120 @@ a {
   border: none;
 }
 
+
+// Here is the challenge overview card for public challenges
+
+.card-public-challenge {
+  background-color: black;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin: 8px 0px 8px 0px;
+  padding: 8px;
+}
+
+.card-public-challenge-infos {
+  height: 28px;
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px solid #9D9D9D;
+  box-shadow: 0 8px 6px -8px #9D9D9D;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card-public-challenge-progress {
+  height: fit-content;
+  width: 100%;
+  padding: 16px 4px 4px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-left: 1px solid #9D9D9D;
+  border-right: 1px solid #9D9D9D;
+  border-bottom: 1px solid #9D9D9D;
+}
+
+.card-public-challenge-progress .card-public-challenge-icon-title {
+  left: 0px;
+  top: -22px;
+  height: 40px;
+  padding: 4px;
+  position: absolute;
+}
+
+.card-public-challenge-icon-title {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-public-challenge-icon {
+  height: 100%;
+  margin: 0px 4px 0px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-public-challenge-title {
+  color: white;
+  height: 100%;
+  margin: 0px 4px 0px 4px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-challenge-progress {
+  height: 64px;
+  width: 100%;
+  padding: 8px 4px 8px 4px;
+  border-right: 1px solid #9D9D9D;
+  border-bottom: 1px solid #9D9D9D;
+  border-left: 1px solid #9D9D9D;
+  box-shadow: 0 8px 6px -8px #9D9D9D;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-public-challenge-description {
+  padding: 24px 0px 8px 0px;
+  color: white;
+  padding: 2px;
+}
+
+.user-name {
+  color: #9D9D9D;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.end-date {
+  color: #4EA8DE;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px 0px 4px 0px;
+  padding: 0px;
+}
+
+
+
+
 // Here is the challenge details card
 
 .challenge-details {
   background-color: black;
-  color: #9D9D9D;
+  color: white;
   border-radius: 4px;
   margin: 16px 0px 8px 0px;
   padding: 4px;
@@ -235,7 +363,7 @@ a {
   color: #7400B8;
 }
 
-// Here is the card for the blog posts overview
+// Here is the card for the blog posts overview (index)
 
 .card-blog-post {
   overflow: hidden;
@@ -279,20 +407,21 @@ a {
   flex: 1;
 }
 
-// Here is the card for the blog posts details
+.card-blog-infos .challenge-title {
+  font-size: 12px;
+}
 
-.image-content {
-  background-size: cover;
-  background-position: center;
-  height: 160px;
-  margin-left: -16vw;
-  padding-left: 16vw;
-  margin-right: -16vw;
-  padding-right: 16vw;
-  margin-bottom: 16px;
+// Here is the card for the blog posts details (show)
+
+.image-content img {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-challenge-connected {

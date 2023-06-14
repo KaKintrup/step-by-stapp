@@ -1,5 +1,5 @@
 
-<% @personal_participation = ChallengeParticipation.all%>
+<% @personal_participation = ChallengeParticipation.all.sample(5)%>
 <% new_completion = ChallengeCompletion.new %>
 
 <!-- New card design -->
@@ -63,10 +63,11 @@
                     <% if counter.positive? %>
                       <% completion += 1 %>
                       <div class = "checked">
-                                        </div>
+                        <i class="fa-solid fa-check"></i>
+                      </div>
                     <% else %>
                       <div class = "checkbox">
-                                        </div>
+                      </div>
                     <% end %>
                   <% end %>
                   <% #now the completion  %>

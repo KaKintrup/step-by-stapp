@@ -1,5 +1,5 @@
 class ChallengeParticipation < ApplicationRecord
   belongs_to :user
   belongs_to :challenge
-  has_many :challenge_completions
+  has_many :challenge_completions, dependent: :destroy
 end

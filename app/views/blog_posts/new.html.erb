@@ -8,6 +8,7 @@
     <%= f.input :title, class: "form-field" %>
     <%= f.input :descripton, label: "Subtitle" %>
     <%= f.input :text %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :challenge_number, label: "Related challenge (if wanted)", collection: Challenge.all, input_html: {}%>
     <%= f.button :submit, "Save blog post", class: "btn-blue" %>
   <% end %>
