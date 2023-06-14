@@ -110,18 +110,13 @@
     <!-- -->
 
 
-
-    <% # Deleting or Editing the challenge %> <!-- -->
+    <!--Deleting or Editing the challenge -->
     <% if @challenge.user == current_user %>
         <%= link_to "Edit challenge", edit_challenge_path, class: "btn-black" %>
         <%= link_to "Delete this challenge", challenge_path(@challenge),
-                        data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic" }, class: "btn-black" %>
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure? You're deleting this challenge for everybody paricipating if it's puplic"}, class: "btn-black" %>
     <% end %>
     <!-- -->
 
 <% end %>
 <!-- -->
-
-
-
-
