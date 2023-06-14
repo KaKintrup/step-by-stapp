@@ -4,13 +4,12 @@ class ChallengeCompletionsController < ApplicationController
     @completion = ChallengeCompletion.new
     @completion.challenge_participation_id = params[:challenge_participation_id]
     @completion.save
-    redirect_to challenge_path(@completion.challenge_participation.challenge_id)
+    redirect_to challenge_participations_path
+  end
+
+  def destroy
+    @completion = ChallengeCompletion.find(params[:id])
+    @completion.destroy
+    redirect_to challenge_path, status: :see_other
   end
 end
-
-
-#@participation = ChallengeParticipation.new
-#@participation.challenge_id = params[:challenge_id]
-#@participation.user_id = current_user.id
-#@participation.save
-#redirect_to challenge_path(@participation.challenge_id)

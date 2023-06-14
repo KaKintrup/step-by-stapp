@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   resources :blog_posts
   resources :challenge_participations, only: [:index, :show] do
-    resources :challenge_completions, only: [:create]
+    resources :challenge_completions, only: :create
   end
+  resources :challenge_completions, only: :destroy
+
 end
