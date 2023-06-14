@@ -1,13 +1,12 @@
 
-<% #actually showing the challenge %>
+<!-- headlines -->
 <div class="underlined-headline mb-2">
   <h1><%= @challenge.title %></h1>
   <div class="headline"></div>
 </div>
+<!--  -->
 
-<!-- Old alternative with png-icons -->
-
-
+<!--  icons of the card determined throu -->
 <div class="card-category">
     <% if @challenge.category == "sports" %>
       <i class="fa-solid fa-person-running sports"></i>
@@ -20,6 +19,7 @@
     <% elsif @challenge.category == "self-organisation" %>
       <i class="fa-solid fa-clipboard-list self-organisation"></i>
       <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+
     <% elsif @challenge.category == "studying" %>
       <i class="fa-solid fa-book-open-cover studying"></i>
       <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
@@ -35,32 +35,6 @@
     <% end %>
 </div>
 
-
-<!-- New alternative with font awesome icons -->
-<!--
-<div class="card-category">
-  <% case @challenge.category %>
-  <% when "sports" %>
-    <i class="fa-solid fa-person-running sports sports"></i>
-    <div class="sports" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% when "mindfulness" %>
-    <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
-    <div class="mindfulness" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% when "self-organisation" %>
-    <i class="fa-solid fa-clipboard-list self-organisation"></i>
-    <div class="self-organisation" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% when "studying" %>
-    <i class="fa-solid fa-book-open-cover studying"></i>
-    <div class="studying" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% when "nutrition" %>
-    <i class="fa-solid fa-glass-water nutrition"></i>
-    <div class="nutrition" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% when "others" %>
-    <i class="fa-solid fa-rocket others"></i>
-    <div class="others" > <strong> <em> <%= @challenge.category %> </em> </strong> </div>
-  <% end %>
-</div>
--->
 
 <div class="challenge-details">
   <div class="challenge-description"><%= @challenge.description %></div>
@@ -109,12 +83,12 @@
         <% if button_seeable %>
 
             <div>
-             <%= simple_form_for [@participation.first, @new_completion] do |f| %>
-               <%= button_tag type: 'submit', class: "check-button" do %>
+              <%= simple_form_for [@participation.first, @new_completion] do |f| %>
+                <%= button_tag type: 'submit', class: "check-button" do %>
                   <i class="fa-solid fa-check" aria-hidden="true"></i>
-               <% end %>
-             <% end %>
-             </div>
+                <% end %>
+              <% end %>
+            </div>
 
       <% end %>
         <% end %>
