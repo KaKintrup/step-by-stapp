@@ -3,6 +3,7 @@
   <head>
     <title>StepByStapp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,7 +18,7 @@
       <div class="container main-container">
 
       <%= yield %>
-      
+
       </div>
 
       <%= render "shared/footer" %>
