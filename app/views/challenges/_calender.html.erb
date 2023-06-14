@@ -43,7 +43,7 @@
         <% if day.wday == 0 && @challenge.weekly_goal <=  weekly_completion %>
             <div class = "checked"></div>
             <% weekly_completion += 1 %>
-            <div class = "weekly_completion-done"></div>
+            <div class = "completion-done"></div>
             </div>
             <br>
             <% weekly_completion = 0 %>
@@ -54,7 +54,7 @@
         <% elsif day.wday == 0 %>
             <div class = "checked"></div>
             <% weekly_completion += 1 %>
-            <div class = "weekly_completion"></div>
+            <div class = "completion"></div>
             </div>
             <br>
             <% weekly_completion = 0 %>
@@ -76,7 +76,7 @@
         <!-- 1. we add the empty checkbox and on the end of the week we add the weekly_completion box filled out when weekly_completion is done this week as setted in the weekly goal -->
         <% if day.wday == 0 && @challenge.weekly_goal <=  weekly_completion %>
             <div class = "checkbox"> </div>
-            <div class = "weekly_completion-done"></div>
+            <div class = "completion-done"></div>
             </div>
             <% weekly_completion = 0 %>
             <br>
@@ -86,7 +86,7 @@
         <!-- 2. we add the empty checkbox and on the end of the week we add just the weekly_completion box  -->
         <% elsif day.wday == 0 %>
             <div class = "checkbox"> </div>
-            <div class = "weekly_completion"></div>
+            <div class = "completion"></div>
             </div>
             <% weekly_completion = 0 %>
             <br>
