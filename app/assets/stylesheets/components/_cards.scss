@@ -110,11 +110,11 @@ a {
 }
 
 .checkbox {
-  background-color: #9D9D9D;
+  background-color: #54525E;
+  box-shadow: 0px 0px 6px 1px rgba(84, 82, 94, 0.8);
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
-  border-radius: 3px;
 }
 
 .extra-boxes {
@@ -122,16 +122,18 @@ a {
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
-  border-radius: 3px;
 }
 
 .checked {
   background-color: white;
-  color: #5E60CE;
+  color: #7400B8;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(180deg, #B6139F, #5E60CE, #80FFDB) 2;
+  box-shadow: 0px 0px 6px 1px rgba(86, 207, 225, 0.8);
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
-  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,24 +144,35 @@ a {
 }
 
 .completion {
-  background-color: #54525E;
+  background-color: #c9c9c9;
+  color: #54525E;
+  box-shadow: 0px 0px 6px 1px rgba(201, 201, 201, 0.8);
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
-  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .completion-done {
-  background-color: #01ad7d;
+  background-color: white;
+  color: #7400B8;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(180deg, #B6139F, #5E60CE, #80FFDB) 1;
+  box-shadow: 0px 0px 6px 1px rgba(128, 255, 219, 0.8);
   height: 20px;
   width: 20px;
   margin: 0px 8px 0px 8px;
-  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .check-button {
   background: linear-gradient(180deg, #B6139F, #5E60CE, #80FFDB);
-  color: black;
+  color: white;
   border-radius: 50%;
   padding: 8px;
   margin: 16px 8px 16px 8px;

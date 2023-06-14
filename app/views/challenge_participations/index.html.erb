@@ -69,12 +69,14 @@
                     <% end %>
                   <% end %>
                   <% #now the completion  %>
+                  
                   <% if participation.challenge.weekly_goal <=  completion %>
-                        <div class = "completion-done">
-                                        </div>
+                    <div class = "completion-done">
+                      <i class="fa-regular fa-face-smile"></i>
+                    </div>
+                    
                   <% else %>
-                        <div class = "completion">
-                                          </div>
+                    <div class = "completion"></div>
                   <% end %>
             </div>
       <% end %>
@@ -89,12 +91,12 @@
         <% if button_seeable %>
 
             <div>
-             <%= simple_form_for [participation , new_completion] do |f| %>
-               <%= button_tag type: 'submit', class: "check-button" do %>
+              <%= simple_form_for [participation , new_completion] do |f| %>
+                <%= button_tag type: 'submit', class: "check-button" do %>
                   <i class="fa-solid fa-check" aria-hidden="true"></i>
-               <% end %>
-             <% end %>
-             </div>
+                <% end %>
+              <% end %>
+            </div>
 
         <% end %>
 
@@ -105,3 +107,5 @@
     <% end %>
   <% end %>
 </div>
+
+
