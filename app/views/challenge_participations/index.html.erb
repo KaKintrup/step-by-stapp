@@ -99,7 +99,7 @@
               <% end %>
             </div>
         <% else %>
-          <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete } do %>
             <i class="fa-sharp fa-solid fa-rotate-left" aria-hidden="true"></i>
           <% end %>
         <% end %>
