@@ -3,6 +3,11 @@
 <!-- setting an aray of the current month-->
 <% one_month = (Date.today.at_beginning_of_month..Date.today.at_end_of_month).to_a %>
 
+<% participation = [current_user.challenge_participations.where(challenge: @challenge)].flatten.first %>
+
+<% current_completion = [current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions)].flatten.first%>
+
+
 <!-- giving the curent month -->
 <div class="underlined-headline">
 <%= Date::MONTHNAMES[Date.today.month] %>
@@ -63,9 +68,12 @@
 
         <!-- 3. we add the checked box at a normal weekday -->
         <% else %>
-            <div class = "checked">
-            <i class="fa-solid fa-check"></i>
-            </div>
+            <%= link_to challenge_completion_path(current_completion), data: { turbo_method: :delete} do %>
+
+              <div class="checked">
+                <i class="fa-solid fa-check"></i>
+              </div>
+            <% end %>
             <% weekly_completion += 1 %>
         <% end %>
 
@@ -95,7 +103,14 @@
 
         <!-- 3. we add the empty checkbox at a normal weekday -->
         <% else %>
-            <div class = "checkbox"> </div>
+            <div class="checkbox">
+
+            <%= simple_form_for [participation , @new_completion],html: {class: "opacity-0"} do |f| %>
+            <%= button_tag type: 'submit', class: "checkbox" %>
+            <% end %>
+
+
+            </div>
         <% end %>
 
     <% end %>
