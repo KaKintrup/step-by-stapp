@@ -2,7 +2,8 @@ class ChallengeParticipationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
+    @personal_participation = ChallengeParticipation.all
+    @new_completion = ChallengeCompletion.new
   end
 
   def create

@@ -15,7 +15,7 @@ class ChallengesController < ApplicationController
     @challenge.user = current_user
     if @challenge.save
       @participation = ChallengeParticipation.create(user: current_user, challenge: @challenge )
-      redirect_to challenges_path
+      redirect_to challenge_path(@challenge)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class ChallengesController < ApplicationController
   def update
     @challenge = Challenge.find(params[:id])
     if @challenge.update(challenge_params)
-      redirect_to challenges_path
+      redirect_to challenge_path(@challenge)
     else
       render :edit, status: :unprocessable_entity
     end

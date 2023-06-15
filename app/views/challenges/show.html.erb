@@ -81,27 +81,7 @@
 
     <% else %>
       <!-- showing the button if user is joined -->
-      <% if !@participation.empty? %>
-
-            <!-- setting the button unseeable if the User already clicked -->
-            <% button_seeable = true %>
-            <% @participation.first.challenge_completions.each do |completion| %>
-                <%if completion.created_at.to_date == Date.today %>
-                    <% button_seeable = false %>
-                <% end %>
-            <% end %>
-
-            <!-- showing the button -->
-            <% if button_seeable %>
-              <div>
-                <%= simple_form_for [@participation.first, @new_completion] do |f| %>
-                  <%= button_tag type: 'submit', class: "check-button" do %>
-                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-      <% end %>
+ 
     <% end %>
     <!-- -->
 
@@ -109,7 +89,6 @@
     <!-- showing the user the community chat and a leave option if he already joined -->
     <% if current_user.joined_challenges.include?(@challenge) && !@participation.empty? %>
         <%= link_to "See community chat", challenge_messages_path(@challenge), class: "btn-blue" %>
-        <p>You're part of this challenge</p>
         <%= link_to "Leave this challenge", challenge_challenge_participation_path(@challenge, @participation.first),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn-black" %>
 
