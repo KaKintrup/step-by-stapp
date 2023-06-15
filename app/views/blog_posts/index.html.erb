@@ -12,25 +12,7 @@
         <h2><%= post.title %> </h2>
         <p> <em> <%= post.descripton %> </em> </p>
         
-        <p>
-          <% if post.challenge_number %>
-            <% @challenge = Challenge.find(post.challenge_number) %>
-            
-              <% if @challenge.category == "sports" %>
-                <div class="challenge-title sports"> Challenge: <%= @challenge.title %> </div>
-              <% elsif @challenge.category == "mindfulness" %>
-                <div class="challenge-title mindfulness"> Challenge: <%= @challenge.title %> </div>
-              <% elsif @challenge.category == "self-organisation" %>
-                <div class="challenge-title self-organisation"> Challenge: <%= @challenge.title %> </div>
-              <% elsif @challenge.category == "studying" %>
-                <div class="challenge-title studying"> Challenge: <%= @challenge.title %> </div>
-              <% elsif @challenge.category == "nutrition" %>
-                <div class="challenge-title nutrition"> Challenge: <%= @challenge.title %> </div>
-              <% elsif @challenge.category == "others" %>
-                <div class="challenge-title others"> Challenge: <%= @challenge.title %> </div>
-              <% end %>
-        </p>
-        <% end %>
+
       </div>
     </div>
   <% end %>

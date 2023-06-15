@@ -1,4 +1,3 @@
-
 <div class="underlined-headline">
   <h2>My challenges</h2>
   <div class="headline"></div>
@@ -9,7 +8,11 @@
   <% if participation.user = current_user %>
     <%= link_to challenge_path(participation.challenge) do %>
       <div class="card-challenge" >
-        <div class="card-challenge-infos"></div>
+        <div class="card-challenge-infos">
+          <% if participation.challenge.public == true %>
+            <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
+          <% end %>
+        </div>
         <div class="card-challenge-progress">
           <div class="card-challenge-icon-title">
 
@@ -62,9 +65,11 @@
 
           <% #now the completion  %>
           <% if participation.challenge.weekly_goal <=  completion %>
-                <div class = "completion-done"></div>
+            <div class = "completion-done">
+              <i class="fa-regular fa-face-smile"></i>
+            </div>
           <% else %>
-                <div class = "completion d-none"></div>
+            <div class = "completion"></div>
           <% end %>
 
           </div>
