@@ -57,11 +57,13 @@
   color: white;
   border-radius: 50%;
   padding: 8px;
-  margin: 16px 8px 16px 8px;
+  margin: 16px 0px 16px 0px;
   text-decoration: none;
   display: flex;
   justify-content: space-evenly;
   border: none;
+  width: 32px;
+  height: 32px;
 }
 
 .uncheck-button {
@@ -69,11 +71,13 @@
   color: white;
   border-radius: 50%;
   padding: 8px;
-  margin: 16px 8px 16px 8px;
+  margin: 16px 0px 16px 0px;
   text-decoration: none;
   display: flex;
   justify-content: center;
   border: none;
+  width: 32px;
+  height: 32px;
 }
 
 .small-arrow-left-button {
