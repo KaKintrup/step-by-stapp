@@ -324,6 +324,12 @@ a {
 
 // Here is the category card design
 
+.card-category-creator {
+  display: flex;
+  justify-content: space-between;
+  color: #9D9D9D;
+}
+
 .card-category {
   padding: 2px;
   display: flex;

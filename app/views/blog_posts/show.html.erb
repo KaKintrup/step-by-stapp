@@ -1,8 +1,16 @@
+<div class="small-arrow-left-button mb-2">
+  <i class="fa-solid fa-circle-arrow-left"></i>
+  <%= link_to "Back to blog", blog_posts_path %>
+</div>
+
 <% #actually showing the post %>
 <div class="underlined-headline">
   <h1><%= @post.title %></h1>
   <div class="headline"></div>
 </div>
+
+
+
 
   <div class="image-content">
     <%= cl_image_tag @post.photo.key%>
@@ -80,6 +88,3 @@
     <%= link_to "Delete this post", blog_post_path(@post),
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn-black" %>
 <% end %>
-
-
-<%= link_to "Back to blog", blog_posts_path, class: "btn-blue" %>

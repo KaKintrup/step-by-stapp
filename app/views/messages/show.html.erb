@@ -1,3 +1,8 @@
+<div class="small-arrow-left-button">
+  <i class="fa-solid fa-circle-arrow-left"></i>
+  <%= link_to "Back to challenge", challenge_path(@challenge)%>
+</div>
+
 <div class="container chatroom">
 
   <h1><%= @challenge.title %></h1>
@@ -41,23 +46,29 @@
     <% @challenge.messages.each do |message| %>
       <div id="message-<%= message.id %>">
         <small>
-          <strong><%= message.user.name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+          <% if message.user.photo.attached? %>
+            <div class="avatar-small mb-2">
+              <%= cl_image_tag message.user.photo.key %>
+              <strong><%= message.user.name %></strong>
+              <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+            </div>
+          <% end %>
         </small>
         <p><%= message.content %></p>
       </div>
+      <hr>
     <% end %>
   </div>
 
-<%= simple_form_for [@challenge, @message],
-  html: {class: "d-flex"} do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Type your message",
-    wrapper_html: {class: "flex-grow-1"}
+  <%= simple_form_for [@challenge, @message],
+    html: {class: "d-flex"} do |f|
   %>
-  <%= f.submit "Send", class: "btn mb-3 btn-submit-blue" %>
-<% end %>
-
+    <%= f.input :content,
+      label: false,
+      placeholder: "Type your message",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn mb-3 btn-submit-blue" %>
+  <% end %>
 </div>
+

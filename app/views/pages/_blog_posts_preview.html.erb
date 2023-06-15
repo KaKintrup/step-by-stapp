@@ -1,9 +1,11 @@
 <%@posts = BlogPost.all.sample(3) %>
 
-  <div class="underlined-headline">
+<%= link_to blog_posts_path do %>
+  <div class="underlined-headline" style="color:white">
     <h2>Latest Posts</h2>
     <div class="headline"></div>
   </div>
+<% end %>
 
 <% @posts.each do  |post|%>
 

@@ -1,106 +1,122 @@
-<div class="underlined-headline">
-  <h2>My challenges</h2>
-  <div class="headline"></div>
-</div>
-
-<div class="cards-challenges my-5">
-<% @personal_participation.each do  |participation|%>
-  <% if participation.user = current_user %>
-    <%= link_to challenge_path(participation.challenge) do %>
-      <div class="card-challenge" >
-        <div class="card-challenge-infos">
-          <% if participation.challenge.public == true %>
-            <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
-          <% end %>
-        </div>
-        <div class="card-challenge-progress">
-          <div class="card-challenge-icon-title">
-
-            <div class="card-challenge-icon">
-              <% if participation.challenge.category == "sports" %>
-                <i class="fa-solid fa-person-running sports"></i>
-              <% elsif participation.challenge.category == "mindfulness" %>
-                <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
-              <% elsif participation.challenge.category == "self-organisation" %>
-                <i class="fa-solid fa-clipboard-list self-organisation"></i>
-              <% elsif participation.challenge.category == "studying" %>
-                <i class="fa-solid fa-book studying"></i>
-              <% elsif participation.challenge.category == "nutrition" %>
-                <i class="fa-solid fa-glass-water nutrition"></i>
-              <% elsif participation.challenge.category == "others" %>
-                <i class="fa-solid fa-rocket others"></i>
-                <% end %>
-            </div>
-
-            <div class="card-challenge-title">
-              <%= participation.challenge.title %>
-            </div>
-          </div>
-
-          <div class="card-challenge-progress-boxes">
-          <% #adding the logic to the check boxes %>
-          <% markers =  [current_user.challenge_participations.where(challenge: participation.challenge).map(&:challenge_completions)].flatten %>
-          <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
-          <% completion = 0 %>
-          <% one_week.each do |day| %>
-              <% counter = 0 %>
-              <% # es sei denn marker day = wie der day  %>
-                  <% markers.each do |marker| %>
-                      <% if marker.created_at.to_date == day %>
-                        <% counter += 1 %>
-                      <% end %>
-                  <% end %>
-
-              <% if counter.positive? %>
-                  <% completion += 1 %>
-                  <div class = "checked">
-                  <i class="fa-solid fa-check"></i>
-                  </div>
-              <% else %>
-                  <div class = "checkbox">
-                  </div>
-              <% end %>
-
-          <% end %>
-
-          <% #now the completion  %>
-          <% if participation.challenge.weekly_goal <=  completion %>
-            <div class = "completion-done">
-              <i class="fa-regular fa-face-smile"></i>
-            </div>
-          <% else %>
-            <div class = "completion"></div>
-          <% end %>
-
-          </div>
-    <% end %>
-          <% # button  %>
-          <div>
-          <% button_seeable = true %>
-          <% current_completion = [] %>
-          <% participation.challenge_completions.each do |one_completion| %>
-              <%if one_completion.created_at.to_date == Date.today %>
-                  <% button_seeable = false %>
-                  <% current_completion << one_completion %>
-              <% end %>
-          <% end %>
-
-          <% if button_seeable %>
-            <%= simple_form_for [participation , @new_completion] do |f| %>
-              <%= button_tag type: 'submit', class: "check-button" do %>
-                <i class="fa-solid fa-check" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-
-          <% else %>
-
-            <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete} do %>
-              <i class="fa-sharp fa-solid fa-rotate-left" aria-hidden="true"></i>
-            <% end %>
-          <% end %>
-          </div>
-        </div>
-      </div>
-  <% end %>
+<%= link_to challenge_participations_path do %>
+  <div class="underlined-headline" style="color:white">
+    <h2>My challenges</h2>
+    <div class="headline"></div>
+  </div>
 <% end %>
+
+<!-- New card design -->
+<div class="cards-challenges my-5">
+  <% @personal_participation.each do  |participation|%>
+    <% if participation.user = current_user %>
+      <%= link_to challenge_path(participation.challenge) do %>
+        <div class="card-challenge" >
+
+
+          <div class="card-challenge-infos">
+            <% if participation.challenge.public == true %>
+              <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
+            <% end %>
+          </div>
+
+
+          <div class="card-challenge-progress">
+            <div class="card-challenge-icon-title">
+
+              <div class="card-challenge-icon">
+                <!-- <%= image_tag "mindfulness-category.png", height: 26, width: 26 %> -->
+                <% if participation.challenge.category == "sports" %>
+                  <i class="fa-solid fa-person-running sports"></i>
+                <% elsif participation.challenge.category == "mindfulness" %>
+                  <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+                <% elsif participation.challenge.category == "self-organisation" %>
+                  <i class="fa-solid fa-clipboard-list self-organisation"></i>
+                <% elsif participation.challenge.category == "studying" %>
+                  <i class="fa-solid fa-book studying"></i>
+                <% elsif participation.challenge.category == "nutrition" %>
+                  <i class="fa-solid fa-glass-water nutrition"></i>
+                <% elsif participation.challenge.category == "others" %>
+                  <i class="fa-solid fa-rocket others"></i>
+                  <% end %>
+              </div>
+
+              <div class="card-challenge-title">
+                <%= participation.challenge.title %>
+              </div>
+            </div>
+            <div class="card-challenge-progress-boxes">
+
+
+
+
+                 <% #adding the logic to the check boxes %>
+
+
+                  <% markers =  current_user.challenge_participations.where(challenge: participation.challenge).map(&:challenge_completions) %>
+                  <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
+                  <% completion = 0 %>
+                  <% one_week.each do |day| %>
+                    <% counter = 0 %>
+                    <% # es sei denn marker day = wie der day  %>
+                        <% markers.each do |completions| %>
+                            <% completions.each do |marker|  %>
+                                <% if marker.created_at.to_date == day %>
+                                  <% counter += 1 %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% if counter.positive? %>
+                      <% completion += 1 %>
+                      <div class = "checked">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                    <% else %>
+                      <div class = "checkbox">
+                      </div>
+                    <% end %>
+                  <% end %>
+                  <% #now the completion  %>
+
+                  <% if participation.challenge.weekly_goal <=  completion %>
+                    <div class = "completion-done">
+                      <i class="fa-regular fa-face-smile"></i>
+                    </div>
+
+                  <% else %>
+                    <div class = "completion"></div>
+                  <% end %>
+            </div>
+      <% end %>
+            <% # button  %>
+            <% button_seeable = true %>
+            <% current_completion = [] %>
+            <% participation.challenge_completions.each do |one_completion| %>
+                <%if one_completion.created_at.to_date == Date.today %>
+                    <% button_seeable = false %>
+                    <% current_completion << one_completion %>
+                <% end %>
+            <% end %>
+        <% if button_seeable %>
+
+            <div>
+              <%= simple_form_for [participation , @new_completion] do |f| %>
+                <%= button_tag type: 'submit', class: "check-button" do %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            </div>
+        <% else %>
+          <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <div class="uncheck-button">
+              <i class="fa-sharp fa-solid fa-rotate-left" aria-hidden="true"></i>
+            </div>
+          <% end %>
+        <% end %>
+
+
+
+          </div>
+        </div>
+    <% end %>
+  <% end %>
 </div>
