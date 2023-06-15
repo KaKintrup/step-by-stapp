@@ -3,9 +3,13 @@
 <!-- setting an aray of the current month-->
 <% one_month = (Date.today.at_beginning_of_month..Date.today.at_end_of_month).to_a %>
 
+<% participation = [current_user.challenge_participations.where(challenge: @challenge)].flatten.first %>
+
+
+
 <!-- giving the curent month -->
 <div class="underlined-headline">
-<%= Date::MONTHNAMES[Date.today.month] %>
+  <%= Date::MONTHNAMES[Date.today.month] %>
 </div>
 
 
@@ -13,24 +17,27 @@
 <!-- giving extra boxes if the month start not on monday -->
 <div class="card-challenge-progress-boxes-month">
 
-<div><%= "cw #{one_month.first.beginning_of_month.cweek}" %></div>
-<% for _ in (2..one_month.first.wday) do %>
-  <div class="extra-boxes"> </div>
-<% end %>
+  <div><%= "cw #{one_month.first.beginning_of_month.cweek}" %></div>
+  <% for _ in (2..one_month.first.wday) do %>
+    <div class="extra-boxes"> </div>
+  <% end %>
 <!-- -->
 
 <!-- this one is needed outside off the each cause we call it also outside  -->
 <!-- It's for seeing the completion of each week   -->
-<% weekly_completion = 0 %>
+  <% weekly_completion = 0 %>
 
 <!-- going to every day to see if there a some completions one those days-->
-<% one_month.each do |day| %>
+  <% one_month.each do |day| %>
+
+  <% current_completion = current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions).flatten.find { |completion| completion.start_time == day }%>
 
     <!-- going with every weekly_completion over the day and if here something the counter gets a value of 1 -->
     <% counter = 0 %>
     <% markers.each do |marker| %>
-      <% if marker.created_at.to_date == day %>
-            <% counter += 1 %>
+      <% if marker.start_time == day %>
+
+        <% counter += 1 %>
       <% end %>
     <% end %>
     <!-- -->
@@ -40,19 +47,28 @@
         <!--we add a checked box and there are 3 Options -->
 
         <!-- 1. we add the checked box and on the end of the week we add the weekly_completion box filled out when weekly_completion is done this week as setted in the weekly goal -->
-        <% if day.wday == 0 && @challenge.weekly_goal <=  weekly_completion %>
-            <div class = "checked"></div>
-            <% weekly_completion += 1 %>
-            <div class = "completion-done"></div>
-            </div>
-            <br>
-            <% weekly_completion = 0 %>
-            <div class="card-challenge-progress-boxes-month">
-            <div><%= "cw #{day.tomorrow.cweek}" %></div>
+      <% if day.wday == 0 && @challenge.weekly_goal <=  weekly_completion %>
+
+        <%= link_to challenge_completion_path(current_completion), data: { turbo_method: :delete} do %>
+          <div class="checked">
+            <i class="fa-solid fa-check"></i>
+          </div>
+        <% end %>
+        <% weekly_completion += 1 %>
+        <div class = "completion-done"></div>
+        </div>
+        <br>
+        <% weekly_completion = 0 %>
+        <div class="card-challenge-progress-boxes-month">
+        <div><%= "cw #{day.tomorrow.cweek}" %></div>
 
         <!-- 2. we add the checked box and on the end of the week we add just the weekly_completion box  -->
         <% elsif day.wday == 0 %>
-            <div class = "checked"></div>
+            <%= link_to challenge_completion_path(current_completion), data: { turbo_method: :delete} do %>
+              <div class="checked">
+                <i class="fa-solid fa-check"></i>
+              </div>
+            <% end %>
             <% weekly_completion += 1 %>
             <div class = "completion"></div>
             </div>
@@ -63,9 +79,14 @@
 
         <!-- 3. we add the checked box at a normal weekday -->
         <% else %>
-            <div class = "checked">
-            <i class="fa-solid fa-check"></i>
-            </div>
+
+            <%= link_to challenge_completion_path(current_completion), data: { turbo_method: :delete} do %>
+
+              <div class="checked">
+                <i class="fa-solid fa-check"></i>
+              </div>
+            <% end %>
+
             <% weekly_completion += 1 %>
         <% end %>
 
@@ -75,7 +96,11 @@
 
         <!-- 1. we add the empty checkbox and on the end of the week we add the weekly_completion box filled out when weekly_completion is done this week as setted in the weekly goal -->
         <% if day.wday == 0 && @challenge.weekly_goal <=  weekly_completion %>
-            <div class = "checkbox"> </div>
+
+            <%= simple_form_for [participation , @new_completion] do |f| %>
+              <%= hidden_field_tag :start_time, day %>
+              <%= f.button :submit, "", class: "checkbox" %>
+            <% end %>
             <div class = "completion-done"></div>
             </div>
             <% weekly_completion = 0 %>
@@ -85,7 +110,10 @@
 
         <!-- 2. we add the empty checkbox and on the end of the week we add just the weekly_completion box  -->
         <% elsif day.wday == 0 %>
-            <div class = "checkbox"> </div>
+            <%= simple_form_for [participation , @new_completion] do |f| %>
+              <%= hidden_field_tag :start_time, day %>
+              <%= f.button :submit, "", class: "checkbox" %>
+            <% end %>
             <div class = "completion"></div>
             </div>
             <% weekly_completion = 0 %>
@@ -95,7 +123,16 @@
 
         <!-- 3. we add the empty checkbox at a normal weekday -->
         <% else %>
-            <div class = "checkbox"> </div>
+
+
+            <%= simple_form_for [participation , @new_completion] do |f| %>
+              <%= hidden_field_tag :start_time, day %>
+              <%# <% f.input :start_time, input_html: { value: Date.today} %>
+              <%= f.button :submit, "", class: "checkbox" %>
+            <% end %>
+
+
+
         <% end %>
 
     <% end %>

@@ -12,11 +12,13 @@
       <%= link_to challenge_path(participation.challenge) do %>
         <div class="card-challenge" >
 
+
           <div class="card-challenge-infos">
             <% if participation.challenge.public == true %>
               <%= image_tag "public-challenge-icon.png", height: 20, width: 20 %>
             <% end %>
           </div>
+
 
           <div class="card-challenge-progress">
             <div class="card-challenge-icon-title">
@@ -42,19 +44,23 @@
                 <%= participation.challenge.title %>
               </div>
             </div>
-            
             <div class="card-challenge-progress-boxes">
-              
-              <% #adding the logic to the check boxes %>
-              <% markers =  current_user.challenge_participations.where(challenge: participation.challenge).map(&:challenge_completions) %>
-              <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
-              <% completion = 0 %>
-              <% one_week.each do |day| %>
-                <% counter = 0 %>
-                <% # es sei denn marker day = wie der day  %>
-                <% markers.each do |completions| %>
-                  <% completions.each do |marker|  %>
-                    <% if marker.created_at.to_date == day %>
+
+
+
+
+                 <% #adding the logic to the check boxes %>
+
+
+                  <% markers =  current_user.challenge_participations.where(challenge: participation.challenge).map(&:challenge_completions) %>
+                  <% one_week = (Date.today.at_beginning_of_week..Date.today.at_end_of_week).to_a %>
+                  <% completion = 0 %>
+                  <% one_week.each do |day| %>
+                    <% counter = 0 %>
+                    <% # es sei denn marker day = wie der day  %>
+                        <% markers.each do |completions| %>
+                            <% completions.each do |marker|  %>
+                                <% if marker.created_at.to_date == day %>
                                   <% counter += 1 %>
                                 <% end %>
                             <% end %>
