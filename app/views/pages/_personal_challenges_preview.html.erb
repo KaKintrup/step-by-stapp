@@ -8,7 +8,7 @@
 <!-- New card design -->
 <div class="cards-challenges my-5">
   <% @personal_participation.each do  |participation|%>
-    <% if participation.user = current_user %>
+    <% if participation.user == current_user %>
       <%= link_to challenge_path(participation.challenge) do %>
         <div class="card-challenge" >
 
