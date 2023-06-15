@@ -6,33 +6,45 @@
 </div>
 <!--  -->
 
-<!--  icons of the card with suiting categories  -->
-<div class="card-category">
-    <% if @challenge.category == "sports" %>
-      <i class="fa-solid fa-person-running sports"></i>
-      <div class="sports"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+<!--  icons of the card with suiting categories and the user (creator) of challenge -->
+<div class="card-category-creator">
 
-    <% elsif @challenge.category == "mindfulness" %>
-      <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
-      <div class="mindfulness"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+  <div class="card-category">
 
-    <% elsif @challenge.category == "self-organisation" %>
-      <i class="fa-solid fa-clipboard-list self-organisation"></i>
-      <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+      <% if @challenge.category == "sports" %>
+        <i class="fa-solid fa-person-running sports"></i>
+        <div class="sports"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
-    <% elsif @challenge.category == "studying" %>
-      <i class="fa-solid fa-book studying"></i>
-      <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+      <% elsif @challenge.category == "mindfulness" %>
+        <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+        <div class="mindfulness"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
-    <% elsif @challenge.category == "nutrition" %>
-      <i class="fa-solid fa-glass-water nutrition"></i>
-      <div class="nutrition"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+      <% elsif @challenge.category == "self-organisation" %>
+        <i class="fa-solid fa-clipboard-list self-organisation"></i>
+        <div class="self-organisation"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
-    <% elsif @challenge.category == "others" %>
-      <i class="fa-solid fa-rocket others"></i>
-      <div class="others"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+      <% elsif @challenge.category == "studying" %>
+        <i class="fa-solid fa-book studying"></i>
+        <div class="studying"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
 
-    <% end %>
+      <% elsif @challenge.category == "nutrition" %>
+        <i class="fa-solid fa-glass-water nutrition"></i>
+        <div class="nutrition"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+
+      <% elsif @challenge.category == "others" %>
+        <i class="fa-solid fa-rocket others"></i>
+        <div class="others"> <strong> <em> <%= @challenge.category %> </em> </strong> </div>
+      <% end %>
+  </div>
+
+  <% if @challenge.public == true %>
+    <p class="avatar-small mb-0">
+      <%= cl_image_tag @challenge.user.photo.key %>
+      <em>by <%= @challenge.user.name %></em>
+    </p>
+  <% else %>
+    <em><p class="mb-0">Private challenge</p></em>
+  <% end %>
 </div>
 <!--  -->
 
