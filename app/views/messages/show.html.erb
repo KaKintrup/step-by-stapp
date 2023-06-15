@@ -1,5 +1,41 @@
 <div class="container chatroom">
+
   <h1><%= @challenge.title %></h1>
+
+  <div class="message-challenge-category">
+    <% if @challenge.category == "sports" %>
+      <div class="sports">
+        <i class="fa-solid fa-person-running sports"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% elsif @challenge.category == "mindfulness" %>
+      <div class="mindfulness">
+        <i class="fa-sharp fa-solid fa-spa mindfulness"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% elsif @challenge.category == "self-organisation" %>
+      <div class="self-organisation">
+        <i class="fa-solid fa-clipboard-list self-organisation"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% elsif @challenge.category == "studying" %>
+      <div class="studying">
+        <i class="fa-solid fa-book studying"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% elsif @challenge.category == "nutrition" %>
+      <div class="nutrition">
+        <i class="fa-solid fa-glass-water nutrition"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% elsif @challenge.category == "others" %>
+      <div class="others">
+        <i class="fa-solid fa-rocket others"></i>
+        <em> <%= @challenge.category %> </em>
+      </div>
+    <% end %>
+  </div>
+
 
   <div class="messages">
     <% @challenge.messages.each do |message| %>
@@ -18,10 +54,10 @@
 %>
   <%= f.input :content,
     label: false,
-    placeholder: "Chat with other Paricipants",
+    placeholder: "Type your message",
     wrapper_html: {class: "flex-grow-1"}
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <%= f.submit "Send", class: "btn mb-3 btn-submit-blue" %>
 <% end %>
 
 </div>

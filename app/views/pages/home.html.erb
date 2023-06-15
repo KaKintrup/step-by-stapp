@@ -15,9 +15,11 @@
 
 <%#= render "completed_cards"  %>
 <%= render "motivation"  %>
+
 <% if current_user %>
-<%= render "personal_challenges_preview"  %>
+  <%= render "personal_challenges_preview" %>
 <% else %>
-<%= render "public_challenges_preview"  %>
+  <%= render "public_challenges_preview" %>
 <% end %>
-<%= render "blog_posts_preview"  %>
+
+<%= render "blog_posts_preview" %>

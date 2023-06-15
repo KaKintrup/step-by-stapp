@@ -1,4 +1,4 @@
-<%@posts = BlogPost.all.sample(5) %>
+<%@posts = BlogPost.all.sample(3) %>
 
   <div class="underlined-headline">
     <h2>Latest Posts</h2>
@@ -13,12 +13,6 @@
       <div class="card-blog-infos">
         <h2><%= post.title %> </h2>
         <p> <em> <%= post.descripton %> </em> </p>
-        <p>
-          <% if post.challenge_number %>
-            <% @challenge = Challenge.find(post.challenge_number) %>
-            <%= @challenge.title %>
-        </p>
-        <% end %>
       </div>
     </div>
   <% end %>
