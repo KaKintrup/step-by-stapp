@@ -9,12 +9,17 @@
   flex-grow: 1;
 
   h1 {
-    border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
-    padding: 1rem;
+    padding: 0px 0px 0px 20px;
+  }
+
+  .message-challenge-category {
+    margin-left: 20px;
+    margin-bottom: 8px;
   }
 
   .messages {
+    border-top: 1px solid $gray-200;
     height: 100%;
     overflow: scroll;
     padding: 1rem;
