@@ -60,7 +60,7 @@
                     <% # es sei denn marker day = wie der day  %>
                         <% markers.each do |completions| %>
                             <% completions.each do |marker|  %>
-                                <% if marker.created_at.to_date == day %>
+                                <% if marker.start_time == day %>
                                   <% counter += 1 %>
                                 <% end %>
                             <% end %>
@@ -91,7 +91,7 @@
             <% button_seeable = true %>
             <% current_completion = [] %>
             <% participation.challenge_completions.each do |one_completion| %>
-                <%if one_completion.created_at.to_date == Date.today %>
+                <%if one_completion.start_time == Date.today %>
                     <% button_seeable = false %>
                     <% current_completion << one_completion %>
                 <% end %>
@@ -100,13 +100,15 @@
 
             <div>
               <%= simple_form_for [participation , @new_completion] do |f| %>
+                <%= hidden_field_tag :start_time, Date.today %>
                 <%= button_tag type: 'submit', class: "check-button" do %>
                   <i class="fa-solid fa-check" aria-hidden="true"></i>
                 <% end %>
               <% end %>
             </div>
         <% else %>
-          <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+
+          <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete} do %>
             <div class="uncheck-button">
               <i class="fa-sharp fa-solid fa-rotate-left" aria-hidden="true"></i>
             </div>

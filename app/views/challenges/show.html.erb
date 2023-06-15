@@ -84,23 +84,33 @@
       <% if !@participation.empty? %>
 
             <!-- setting the button unseeable if the User already clicked -->
-            <% button_seeable = true %>
-            <% @participation.first.challenge_completions.each do |completion| %>
-                <%if completion.created_at.to_date == Date.today %>
+          <% button_seeable = true %>
+            <% current_completion = [] %>
+            <% @participation.first.challenge_completions.each do |one_completion| %>
+                <%if one_completion.start_time == Date.today %>
                     <% button_seeable = false %>
+                    <% current_completion << one_completion %>
                 <% end %>
             <% end %>
+        <% if button_seeable %>
 
-            <!-- showing the button -->
-            <% if button_seeable %>
-              <div>
-                <%= simple_form_for [@participation.first, @new_completion] do |f| %>
-                  <%= button_tag type: 'submit', class: "check-button" do %>
-                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                  <% end %>
+            <div>
+              <%= simple_form_for [@participation.first , @new_completion] do |f| %>
+                <%= hidden_field_tag :start_time, Date.today %>
+                <%= button_tag type: 'submit', class: "check-button" do %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
                 <% end %>
+              <% end %>
+            </div>
+        <% else %>
+          <div>
+            <%= link_to challenge_completion_path(current_completion.first), data: { turbo_method: :delete} do %>
+              <div class="uncheck-button">
+                <i class="fa-sharp fa-solid fa-rotate-left" aria-hidden="true"></i>
               </div>
-            <% end %>
+          </div>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
     <!-- -->
