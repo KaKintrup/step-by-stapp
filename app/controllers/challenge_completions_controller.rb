@@ -3,13 +3,14 @@ class ChallengeCompletionsController < ApplicationController
   def create
     @completion = ChallengeCompletion.new
     @completion.challenge_participation_id = params[:challenge_participation_id]
+    @completion.start_time = params[:start_time]
     @completion.save
-    redirect_to challenge_participations_path
+    redirect_back_or_to root_path
   end
 
   def destroy
     @completion = ChallengeCompletion.find(params[:id])
     @completion.destroy
-    redirect_to challenge_path, status: :see_other
+    redirect_back_or_to root_path
   end
 end
