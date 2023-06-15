@@ -30,7 +30,7 @@
 <!-- going to every day to see if there a some completions one those days-->
   <% one_month.each do |day| %>
 
-  <% current_completion = current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions).flatten.find { |completion| completion.start_time.to_date == day }%>
+  <% current_completion = current_user.challenge_participations.where(challenge: @challenge).map(&:challenge_completions).flatten.find { |completion| completion.start_time == day }%>
 
     <!-- going with every weekly_completion over the day and if here something the counter gets a value of 1 -->
     <% counter = 0 %>
