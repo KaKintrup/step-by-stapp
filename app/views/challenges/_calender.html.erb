@@ -182,7 +182,7 @@
             <div>
               <%= simple_form_for [participation , @new_completion] do |f| %>
                 <%= hidden_field_tag :start_time, Date.today %>
-                <%= button_tag type: 'submit', class: "check-button" do %>
+                <%= button_tag type: 'submit', class: "check-button my-2 mx-2" do %>
                   <i class="fa-solid fa-check" aria-hidden="true"></i>
                 <% end %>
               <% end %>
